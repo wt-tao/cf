@@ -1,0 +1,24 @@
+/* pages/order_detail/order_detail.wxss */
+page{background-color: #EFEFF4}
+.top{width: 100%;background-color: #FFE574;height:250rpx;}
+.state{width: 50%;font-size: 36rpx;color: #4F4B3C;line-height: 210rpx;margin-left: 70rpx;}
+.userinfo{width: 100%;background-color: white;border-top-right-radius: 30rpx;border-top-left-radius: 30rpx;margin-top: -30rpx;border: 1rpx solid white;}
+.list{width: 100%;height: 200rpx;border-bottom: 1rpx solid #F9F9F9 ;background-color: white;}
+.head_img{margin-left: 4%;width: 120rpx;height:120rpx;border-radius: 50%;border: 1rpx solid black;margin-top:30rpx;}
+.list_center{width: 75%;margin-left: 50rpx;margin-top: 30rpx;height: 170rpx;}
+.tz_name{width: 100%;color: #252525;font-size: 30rpx;line-height: 50rpx;font-weight: bolder;}
+.T_name{width: 100%;color: #252525;font-size: 28rpx;font-weight: bolder;text-overflow: ellipsis;overflow:hidden;white-space: nowrap;margin-top:10rpx;}
+.cl_add{width: 100%;flex-wrap: wrap;color: #BFBFBF;font-size: 28rpx;line-height: 50rpx;margin-top:10rpx;}
+.lists{width: 100%;background-color: white;margin-top: 30rpx;}
+.list_div{width: 92%;margin-left: 4%;}
+.title{width: 100%;height:60rpx;line-height: 60rpx;font-size: 26rpx;color: #B3B3B3;border-bottom: 1rpx solid #F7F7F7}
+.comdity{width: 100%;height:250rpx;border-bottom: 1rpx solid #F7F7F7}
+.comdity_img{width: 200rpx;height:200rpx;margin-top: 25rpx;border: 1rpx solid black;}
+.comdity_center{width: 300rpx;height: 200rpx;margin-top: 25rpx;margin-left: 30rpx;}
+.comdity_name{width: 100%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;line-height: 100rpx;margin-top:20rpx;font-size: 28rpx;color: #383838;}
+.bz{font-size: 26rpx;color: #C3C3C3;margin-top: -30rpx;}
+.comdity_right{width: 180rpx;height: 200rpx;margin-top: 25rpx;text-align: right;}
+.bottom{width: 100%;line-height: 100rpx;font-size: 28rpx;color: #333333;border-bottom: 1rpx solid #F7F7F7}
+.number{width: 50%;}
+.numbers{text-align: right;width: 50%;}
+.order_card{margin-top: 30rpx;line-height: 60rpx;background-color: white;color: #323232;font-size: 28rpx;}

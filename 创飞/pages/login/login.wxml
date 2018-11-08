@@ -1,0 +1,4 @@
+<!--pages/login/login.wxml-->
+<image src='../../img/0_02.png' class='img' mode='widthFix'/>
+<button class='button' open-type='getUserInfo' bindgetuserinfo="onGotUserInfo">授权登录</button>
+<view class='bz'>登录创飞开启您的优质之旅</view>

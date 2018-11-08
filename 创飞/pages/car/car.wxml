@@ -1,0 +1,59 @@
+<!--pages/car/car.wxml-->
+  <view class='list flex' style='margin-top: 30rpx;'>
+      <view class='head_img'></view>
+      <view class='list_center'>
+          <view class='tz_name'>团长：某某某</view>
+          <view class='T_name'>成都创飞社区优享群</view>
+          <view class='cl_add'>四川省成都市武侯区xx大道xxx号</view>
+      </view>
+  </view>
+  <view style='height:30rpx;'></view>
+
+  <!-- 列表 -->
+<view class='list flex'>
+    <image src='../../img/sec (1).png' style='width:50rpx;margin-left:30rpx;margin-top:100rpx;' mode='widthFix'/>
+    <view class='com_detail'></view>
+    <view class='list_right'>
+          <view class='name'>澳大利亚进口祁橙，奥橙12.00</view>
+          <view class='money flex'>
+            <view class='price'>￥9.99<text style='color:#B5B5B5;font-size:28rpx;text-decoration:line-through'>￥60.00</text></view>
+            <view class='price number'>
+                <view class='jj flex'>
+                    <view class='icon'>-</view>
+                    <view class='icon'>1</view>
+                    <view class='icon' style='border:none'>+</view>
+                </view>
+            </view>
+          </view>
+    </view>
+</view>
+
+<view class='list flex'>
+    <image src='../../img/sec (2).png' style='width:50rpx;margin-left:30rpx;margin-top:100rpx;' mode='widthFix'/>
+    <view class='com_detail'></view>
+    <view class='list_right'>
+          <view class='name'>澳大利亚进口祁橙，奥橙12.00阿斯蒂芬ss手动阀F</view>
+          <view class='money flex'>
+            <view class='price'>￥9.99<text style='color:#B5B5B5;font-size:28rpx;text-decoration:line-through'>￥60.00</text></view>
+            <view class='price number'>
+                <view class='jj flex'>
+                    <view class='icon'>-</view>
+                    <view class='icon'>1</view>
+                    <view class='icon' style='border:none'>+</view>
+                </view>
+            </view>
+          </view>
+    </view>
+</view>
+
+<view style='height:120rpx;'></view>
+
+
+<view class='button flex'>
+    <view class='secAll flex'>
+        <image src='../../img/sec (2).png' style='width:45rpx;margin-left:30rpx;margin-top:30rpx;' mode='widthFix'/>
+        <view style='margin-left:20rpx;'>全选</view>
+    </view>
+    <view class='left'>合计：<text style='color:#ED0707'>￥2999.97</text></view>
+    <view class='submit'>去结算(2)</view>
+</view>

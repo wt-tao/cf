@@ -1,0 +1,7 @@
+/* pages/recruit/recruit.wxss */
+.div{width: 100%;z-index: 1002;position: fixed;top: 0;height: 100%;}
+.recruit{width: 100%;text-align: center;font-size: 60rpx;font-weight: bolder;margin-top:200rpx;}
+.recruits{width: 100%;text-align: center;font-size: 28rpx;margin-top: 20rpx;}
+.input{width: 70%;margin-left: 14%;background-color: white;height: 80rpx;padding-left:20rpx;font-size: 28rpx;margin-top:30rpx;}
+.button{width: 70%;margin-left: 15%; line-height: 80rpx;text-align: center;background-color: #F26600;color:white;font-size: 28rpx;margin-top: 50rpx;border-radius: 40rpx;}
+.ts{width: 100%;text-align: center;font-size: 24rpx;color: #F68B22;margin-top:20rpx;}

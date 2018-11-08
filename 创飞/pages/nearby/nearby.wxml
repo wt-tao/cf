@@ -1,0 +1,38 @@
+<!--pages/nearby/nearby.wxml-->
+<view class='top flex'>
+    <view class='top_right flex'>
+        <view class='top_r'>
+            <view class='dangq'>您所在的当前位置</view>
+            <view class='address'>四川省成都市武侯区xx大道xxx号</view>
+        </view>
+        <view class='modify' bindtap='addr'>修改地址</view>
+    </view>
+</view>
+<view style='height:30rpx;background-color:#EFEFF4'></view>
+
+<!-- 列表 -->
+<view class='list flex'>
+    <view class='head_img'></view>
+    <view class='list_center'>
+        <view class='tz_name'>团长：某某某</view>
+        <view class='T_name'>成都创飞社区优享群</view>
+        <view class='cl_add'>四川省成都市武侯区xx大道xxx号菜鸟驿站</view>
+    </view>
+    <view class='list_right'>
+        <view class='jl'>距您1.98km</view>
+        <view class='seclect'>选择</view>
+    </view>
+</view>
+<view class='list flex'>
+    <view class='head_img'></view>
+    <view class='list_center'>
+        <view class='tz_name'>团长：某某某</view>
+        <view class='T_name'>成都创飞社区优享群</view>
+        <view class='cl_add'>四川省成都市武侯区xx大道xxx号菜鸟驿站</view>
+    </view>
+    <view class='list_right'>
+        <view class='jl'>距您1.98km</view>
+        <view class='seclect'>选择</view>
+    </view>
+</view>
+<view style='height:30rpx;'></view>

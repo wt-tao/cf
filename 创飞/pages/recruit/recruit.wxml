@@ -1,0 +1,16 @@
+<!--pages/recruit/recruit.wxml-->
+<image src='../../img/z-1.png' style='width:100%;height:100%;z-index: 1002;position: fixed;top: 0' />
+<view class='div'>
+    <view class='recruit'>团长招募</view>
+    <view class='recruits'>足不出户 轻松赚钱</view>
+
+    <input class='input' style='margin-top:80rpx;' placeholder='请输入您的姓名' placeholder-style='font-size:28rpx;color:#BEBEBE' bindinput='name'></input>
+    <input class='input'  placeholder='请输入您所在的城市与区县名称' placeholder-style='font-size:28rpx;color:#BEBEBE' bindinput='area'></input>
+    <input class='input'  placeholder='请输入您的小区名称' placeholder-style='font-size:28rpx;color:#BEBEBE' bindinput='addres'></input>
+    <input class='input'  placeholder='请输入您的手机号码' placeholder-style='font-size:28rpx;color:#BEBEBE' bindinput='phone' type='number'></input>
+
+    <view class='button' bindtap='tj'>立即提交</view>
+
+    <view class='ts' style='margin-top:50rpx;'>提交信息，我们将在审核后与您联系</view>
+    <view class='ts'>如有疑问，请咨询：111-111-1111</view>
+</view>

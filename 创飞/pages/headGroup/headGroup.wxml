@@ -1,0 +1,35 @@
+<!--pages/headGroup/headGroup.wxml-->
+<view class='addres'>
+  <view class='addres_top flex'>
+    <image src='../../img/dz-(1).png' class='addr_img' mode='widthFix'/>
+    <view class='addres_top_right'>
+        <view class='addres_top_text'>当前地址</view>
+        <view class='addres_top_text' style='font-size:30rpx;'>四川省成都市武侯区xx大道xxx号</view>
+    </view>
+  </view>
+  <navigator url='../nearby/nearby'>
+    <view class='button'>附近其他团长</view>
+  </navigator>
+</view>
+
+
+<view class='div' hidden='{{typ}}' wx:for='{{list}}'>
+    <view class='div_distance'>距您{{item.distance/1000}}km</view>
+    <view class='head_img'>
+        <image src='{{item.head_img}}' style='width:100%;' mode='widthFix' class='img'/>
+    </view>
+    <view class='name'>团长：{{item.user_name}}</view>
+    <view class='dq'>当前位置</view>
+    <view class='dq add'>{{item.area}}{{item.address}}</view>
+    <view class='seclect'>选择此团长</view>
+</view>
+<view class='div'>
+    <view class='div_distance'>距您1.63km</view>
+    <view class='head_img'></view>
+    <view class='name'>团长：某某某</view>
+    <view class='dq'>当前位置</view>
+    <view class='dq add'>四川省成都市武侯区xx大道xxx号</view>
+    <view class='seclect'>选择此团长</view>
+</view>
+
+<view style='height:30rpx;'></view>

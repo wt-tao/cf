@@ -1,0 +1,10 @@
+<!--pages/addres/addres.wxml-->
+<view class='search '>
+    <view class='s_input flex'>
+      <input class='input' placeholder='输入收货地址' placeholder-style='color:#ACACAD;font-size:28rpx;' bindinput='key'/>    
+      <image src='../../img/1.3_05.png' style='width:40rpx;margin-left:50rpx;margin-top:20rpx;' mode='widthFix' bindtap='search'/>
+    </view>
+</view>
+<view class='list' wx:for='{{list}}'>
+    <view class='text' bindtap='seclect' data-lat='{{item.location.lat}}' data-lng='{{item.location.lng}}'>{{item.title}}</view>
+</view>

@@ -1,0 +1,78 @@
+<!--pages/order/order.wxml-->
+<view class='titles flex'>
+  <view class='title_list {{item.id==ids?"on":""}}' wx:for='{{list}}' bindtap='list' id='{{item.id}}'>{{item.title}}</view>
+</view>
+
+<view class='list' bindtap='order_detail' id='1'>
+    <view class='list_div'>
+        <view class='title flex'>
+            <view class='name'>团长姓名 | 成都创飞社区优享群 | 四川省成都市</view>
+            <view class='state'>已发货</view>
+        </view>
+        <!-- 商品 -->
+        <view class='comdity flex'>
+            <view class='comdity_img'></view>
+            <view class='comdity_center'>
+                <view class='comdity_name'>澳大利亚进口祁橙，奥橙12.00</view>
+                <view class='comdity_name bz'>新鲜保障 配送迅速</view>
+            </view>
+            <view class='comdity_right'>
+                <view class='comdity_name' style='color:#EE1616;font-size:30rpx;'>￥9.99</view>
+                <view class='comdity_name bz'>*1</view>
+            </view>
+        </view>
+        <view class='comdity flex'>
+            <view class='comdity_img'></view>
+            <view class='comdity_center'>
+                <view class='comdity_name'>澳大利亚进口祁橙，奥橙12.00</view>
+                <view class='comdity_name bz'>新鲜保障 配送迅速</view>
+            </view>
+            <view class='comdity_right'>
+                <view class='comdity_name' style='color:#EE1616;font-size:30rpx;'>￥9.99</view>
+                <view class='comdity_name bz'>*1</view>
+            </view>
+        </view>
+        <!-- 价格 -->
+        <view class='bottom flex'>
+            <view class='number'>共 2 件商品</view>
+            <view class='numbers'>合计：<text style='color:#ED0606;font-size:34rpx;'>￥19.98</text></view>
+        </view>
+    </view>
+</view>
+
+<view class='list'>
+    <view class='list_div'>
+        <view class='title flex'>
+            <view class='name'>团长姓名 | 成都创飞社区优享群 | 四川省成都市</view>
+            <view class='state'>已发货</view>
+        </view>
+        <!-- 商品 -->
+        <view class='comdity flex'>
+            <view class='comdity_img'></view>
+            <view class='comdity_center'>
+                <view class='comdity_name'>澳大利亚进口祁橙，奥橙12.00</view>
+                <view class='comdity_name bz'>新鲜保障 配送迅速</view>
+            </view>
+            <view class='comdity_right'>
+                <view class='comdity_name' style='color:#EE1616;font-size:30rpx;'>￥9.99</view>
+                <view class='comdity_name bz'>*1</view>
+            </view>
+        </view>
+        <view class='comdity flex'>
+            <view class='comdity_img'></view>
+            <view class='comdity_center'>
+                <view class='comdity_name'>澳大利亚进口祁橙，奥橙12.00</view>
+                <view class='comdity_name bz'>新鲜保障 配送迅速</view>
+            </view>
+            <view class='comdity_right'>
+                <view class='comdity_name' style='color:#EE1616;font-size:30rpx;'>￥9.99</view>
+                <view class='comdity_name bz'>*1</view>
+            </view>
+        </view>
+        <!-- 价格 -->
+        <view class='bottom flex'>
+            <view class='number'>共 2 件商品</view>
+            <view class='numbers'>合计：<text style='color:#ED0606;font-size:34rpx;'>￥19.98</text></view>
+        </view>
+    </view>
+</view>
