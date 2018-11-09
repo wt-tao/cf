@@ -1,10 +1,12 @@
 <!--index.wxml-->
 <navigator url='../headGroup/headGroup'>
   <view class='top flex'>
-        <view class='head_img'></view>
+        <view class='head_img'>
+            <image src='{{group.head_img}}' style='width:100%;' mode='widthFix' class='img'/>
+        </view>
         <view class='top_con'>
-          <view class='top_con_s' style='color:#1F1F1F;font-weight: 800'>成都创飞社区优享群 团长-某某某</view>
-          <view class='top_con_s'>四川省成都市武侯区xx大道xxx号</view>
+          <view class='top_con_s' style='color:#1F1F1F;font-weight: 800'>{{group.group_name}} 团长-{{group.user_name}}</view>
+          <view class='top_con_s'>{{group.area}}{{group.address}}</view>
         </view>
         <image src='../../img/dbx-1.png' style='width:25rpx;margin-top:45rpx;margin-left:10rpx;' mode='widthFix'/>
   </view>
@@ -14,7 +16,7 @@
      <swiper indicator-dots="true" autoplay="true" interval="3000" indicator-color='white' indicator-active-color='#FF7F01' duration="1000" class="swiper-item" circular="true">
           <block wx:for="{{banner}}" wx:for-index="index">
               <swiper-item>
-                <image src="{{item.imgUrl}}" class="slide-image" style='width:100%;height:100%' mode="aspectFill" />
+                <image src="{{item}}" class="slide-image" style='width:100%;height:100%' mode="aspectFill" />
               </swiper-item>
           </block>
      </swiper>
@@ -46,58 +48,31 @@
 <view class='tabber'>
   <scroll-view scroll-x style=" white-space: nowrap; display: flex">
     <block wx:for='{{list}}'>
-      <view class='tabber_list {{item.id==ids?"on":""}}'  bindtap='list'  id='{{item.id}}' style='display: inline-block'>{{item.text}}</view>
+      <view class='tabber_list {{item.id==ids?"on":""}}'  bindtap='list'  id='{{item.id}}' style='display: inline-block'>{{item.name}}</view>
     </block>
   </scroll-view>
 </view>
 
 <!-- 商品列表 -->
 <view class='list flex'>
-  <view class='list_com' bindtap='comdity_detail'>
-      <view class='list_img'></view>
+  <view class='list_com' bindtap='comdity_detail' wx:for='{{countDownList}}' id='{{item.goods_id}}'>
+      <view class='list_img'>
+          <image src='{{item.original_img}}' style='width:100%;height:100%' mode='aspectFill'/>
+      </view>
       <view class='time flex'>
           <view style='margin-left:10rpx;'>距离结束：</view>
-          <view style='margin-left:40rpx;'>04:00:00</view>
+          <view style='margin-left:20rpx;' >{{item.end_time}}</view>
       </view>
-      <view class='list_name'>澳大利亚进口祁橙，奥橙12.00</view>
-      <view class='list_name' style='font-size:28rpx;color: #B2B2B2;'>新鲜保障，配送迅速</view>
+      <view class='list_name'>{{item.goods_name}}</view>
+      <view class='list_name' style='font-size:28rpx;color: #B2B2B2;'>{{item.goods_remark}}</view>
       <view class='list_name flex' style='font-size:24rpx;'>
           <view class='list_name_price' style='color:#ED0000;font-size:28rpx;'>
-              ￥999.99 <text style='color: #B2B2B2;text-decoration:line-through'>￥60.00</text>
+            ￥{{item.shop_price}} <text style='color: #B2B2B2;text-decoration:line-through'>￥{{item.original_price}}</text>
           </view>
-          <view class='list_name_number' style='color: #B2B2B2;margin-left:20rpx;'>已拼20份</view>
+          <view class='list_name_number' style='color: #B2B2B2;margin-left:20rpx;'>已拼{{item.order_count}}份</view>
       </view>
   </view>
-    <view class='list_com'>
-      <view class='list_img'></view>
-      <view class='time flex'>
-          <view style='margin-left:10rpx;'>距离结束：</view>
-          <view style='margin-left:40rpx;'>04:00:00</view>
-      </view>
-      <view class='list_name'>澳大利亚进口祁橙，奥橙12.00</view>
-      <view class='list_name' style='font-size:28rpx;color: #B2B2B2;'>新鲜保障，配送迅速</view>
-      <view class='list_name flex' style='font-size:24rpx;'>
-          <view class='list_name_price' style='color:#ED0000;font-size:28rpx;'>
-              ￥9.99 <text style='color: #B2B2B2;text-decoration:line-through'>￥60.00</text>
-          </view>
-          <view class='list_name_number' style='color: #B2B2B2;margin-left:20rpx;'>已拼20份</view>
-      </view>
-  </view>
-    <view class='list_com'>
-      <view class='list_img'></view>
-      <view class='time flex'>
-          <view style='margin-left:10rpx;'>距离结束：</view>
-          <view style='margin-left:40rpx;'>04:00:00</view>
-      </view>
-      <view class='list_name'>澳大利亚进口祁橙，奥橙12.00</view>
-      <view class='list_name' style='font-size:28rpx;color: #B2B2B2;'>新鲜保障，配送迅速</view>
-      <view class='list_name flex' style='font-size:24rpx;'>
-          <view class='list_name_price' style='color:#ED0000;font-size:28rpx;'>
-              ￥999.99 <text style='color: #B2B2B2;text-decoration:line-through'>￥60.00</text>
-          </view>
-          <view class='list_name_number' style='color: #B2B2B2;margin-left:20rpx;'>已拼20份</view>
-      </view>
-  </view>
+
 </view>
 
 <view style='height:20rpx;'></view>

@@ -13,6 +13,30 @@ Page({
    */
   onLoad: function (options) {
       console.log(options)
+    wx.showLoading({
+      title: '加载中...',
+      duration: 2000
+    })
+    var that = this
+    wx.request({
+      url: getApp().globalData.url + '/home/order/detail',
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8', // 默认值
+        // 'content-type': 'application/json;charset=utf-8',
+      },
+      data: {
+        key: wx.getStorageSync('result'),
+        order_id: options.id,
+      },
+      success: function (res) {
+        console.log('订单详情', res)
+        that.setData({
+          lists: res.data.result,
+        })
+        wx.hideLoading()
+      }
+    })
   },
 
   /**

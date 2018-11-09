@@ -3,7 +3,7 @@
     <view class='top_right flex'>
         <view class='top_r'>
             <view class='dangq'>您所在的当前位置</view>
-            <view class='address'>四川省成都市武侯区xx大道xxx号</view>
+            <view class='address'>{{adde}}</view>
         </view>
         <view class='modify' bindtap='addr'>修改地址</view>
     </view>
@@ -11,28 +11,19 @@
 <view style='height:30rpx;background-color:#EFEFF4'></view>
 
 <!-- 列表 -->
-<view class='list flex'>
-    <view class='head_img'></view>
+<view class='list flex' wx:for='{{list}}'>
+    <view class='head_img'>
+      <image src='{{item.head_img}}' style='width:100%;' mode='widthFix' class='img'/>
+    </view>
     <view class='list_center'>
-        <view class='tz_name'>团长：某某某</view>
-        <view class='T_name'>成都创飞社区优享群</view>
-        <view class='cl_add'>四川省成都市武侯区xx大道xxx号菜鸟驿站</view>
+        <view class='tz_name'>团长：{{item.user_name}}</view>
+        <view class='T_name'>{{item.group_name}}</view>
+        <view class='cl_add'>{{item.area}}{{item.address}}</view>
     </view>
     <view class='list_right'>
-        <view class='jl'>距您1.98km</view>
-        <view class='seclect'>选择</view>
+        <view class='jl'>距您{{item.distance/1000}}km</view>
+        <view class='seclect' bindtap='sec' id='{{item.group_id}}'>选择</view>
     </view>
 </view>
-<view class='list flex'>
-    <view class='head_img'></view>
-    <view class='list_center'>
-        <view class='tz_name'>团长：某某某</view>
-        <view class='T_name'>成都创飞社区优享群</view>
-        <view class='cl_add'>四川省成都市武侯区xx大道xxx号菜鸟驿站</view>
-    </view>
-    <view class='list_right'>
-        <view class='jl'>距您1.98km</view>
-        <view class='seclect'>选择</view>
-    </view>
-</view>
+
 <view style='height:30rpx;'></view>

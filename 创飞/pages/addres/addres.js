@@ -29,8 +29,10 @@ Page({
   },
   seclect:function(e){
     console.log(e)
-    var lat = e.currentTarget.dataset.lat
-    var lng = e.currentTarget.dataset.lng
+    var add = e.currentTarget.dataset.title
+    wx.navigateTo({
+      url: '../nearby/nearby?add=' + add,
+    })
 
   },
   /**

@@ -1,13 +1,9 @@
 /**index.wxss**/
-.top{
-  width: 100%;
-  height: 130rpx;
-  /* border: 1rpx solid black; */
-}
-.head_img{width: 100rpx;height: 100rpx;border-radius: 50%;margin-top:15rpx;margin-left: 30rpx;border: 1rpx solid black; }
+.top{width: 100%;height: 130rpx;}
+.head_img{width: 100rpx;height: 100rpx;border-radius: 50%;margin-top:15rpx;margin-left: 30rpx; }
 .top_con{width: 70%;margin-left: 20rpx;height: 100rpx;font-size: 28rpx;margin-top:15rpx;line-height: 50rpx;}
 .top_con_s{width: 100%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;color: #5C5C5C;}
-.head{position: relative;border: 1rpx solid black; }
+.head{position: relative;}
 .slide-image{ width: 100%;}
 .swiper-item{height:322rpx;display: block;}
 .menu-swiper-item{height:360rpx;}
@@ -24,8 +20,9 @@
 .on{background-color: #FFE574}
 .list{width: 100%;margin-top: 30rpx;flex-wrap: wrap;}
 .list_com{height: 430rpx;border: 1rpx solid #CCCCCC; border-radius: 30rpx;margin-top: 30rpx;margin-left: 4%;width: 327rpx;}
-.list_img{width: 90%;margin-left: 5%;border:1rpx solid black;margin-top: 15rpx;height: 200rpx;}
+.list_img{width: 90%;margin-left: 5%;margin-top: 15rpx;height: 200rpx;}
 .time{width: 95%;margin-left: 2.5%;background-color: #F26600;color: white;font-size: 28rpx;height: 40rpx;line-height: 40rpx;}
 .list_name{width: 95%;margin-left: 2.5%;font-size: 30rpx;line-height: 50rpx;color:#333333;height:50rpx;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 .list_name_price{text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width:60%;}
 .list_name_number{text-align: right;width:40%;}
+.img{border-top-left-radius: 50%;border-top-right-radius: 50%;border-bottom-left-radius: 50%;border-bottom-right-radius: 50%;}

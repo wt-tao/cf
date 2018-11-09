@@ -6,5 +6,5 @@
     </view>
 </view>
 <view class='list' wx:for='{{list}}'>
-    <view class='text' bindtap='seclect' data-lat='{{item.location.lat}}' data-lng='{{item.location.lng}}'>{{item.title}}</view>
+    <view class='text' bindtap='seclect' data-title='{{item.title}}' >{{item.title}}</view>
 </view>

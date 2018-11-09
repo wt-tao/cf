@@ -13,40 +13,40 @@
 <view class='order'>
     <view class='order_title flex'>
         <view class='title_name'>我的订单</view>
-        <view class='ck_all' bindtap='see' id='1' data-title='全部订单'>查看全部</view>
+        <view class='ck_all' bindtap='see' id='9' data-title='全部订单'>查看全部</view>
         <image src='../../img/dbx-1-kb.png' style='width:15rpx;margin-top:35rpx;margin-left:20rpx;' mode='widthFix'/>
     </view>
 
     <view class='order_list flex'>
-        <view class='list' bindtap='see' id='2' data-title='待付款'>
+        <view class='list' bindtap='see' id='0' data-title='待付款'>
             <view class='images'>
                 <image src='../../img/fk (1).png' style='width:70%;height:80%;margin-left:15%;'/>
                 <view class='number'>{{user.waitPay}}</view>
             </view>
             <view class='order_text'>待付款</view>
         </view>
-        <view class='list' bindtap='see' id='3' data-title='待配送'>
+        <view class='list' bindtap='see' id='1' data-title='待配送'>
             <view class='images'>
                 <image src='../../img/fk (3).png' style='width:70%;height:80%;margin-left:15%;'/>
                 <view class='number'>{{user.waitSend}}</view>
             </view>
             <view class='order_text'>待配送</view>
         </view>
-        <view class='list' bindtap='see' id='4' data-title='已发货'>
+        <view class='list' bindtap='see' id='2' data-title='已发货'>
             <view class='images'>
                 <image src='../../img/fk (4).png' style='width:80%;height:80%;margin-left:10%;'/>
                 <view class='number'>{{user.endSend}}</view>
             </view>
             <view class='order_text'>已发货</view>
         </view>
-        <view class='list' bindtap='see' id='5' data-title='待自提'>
+        <view class='list' bindtap='see' id='3' data-title='待自提'>
             <view class='images'>
                 <image src='../../img/fk (2).png' style='width:80%;height:80%;margin-left:10%;'/>
                 <view class='number'>{{user.waitGet}}</view> 
             </view>
             <view class='order_text'>待自提</view>
         </view>
-        <view class='list' bindtap='see' id='6' data-title='已完成'>
+        <view class='list' bindtap='see' id='4' data-title='已完成'>
             <view class='images'>
                 <image src='../../img/fk (5).png' style='width:70%;height:80%;margin-left:15%;'/>
                 <view class='number'>{{user.endComplete}}</view>

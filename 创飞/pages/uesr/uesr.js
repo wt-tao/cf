@@ -41,6 +41,10 @@ Page({
    */
   onShow: function () {
     var that=this
+    wx.showLoading({
+      title: '加载中...',
+      duration: 2000
+    })
     wx.request({
       url: getApp().globalData.url + '/home/user/center',
       method: "POST",
@@ -53,11 +57,16 @@ Page({
       },
       success: function (res) {
         console.log('个人中心', res)
+        wx.setStorage({
+          key: 'boss',
+          data: res.data.result.is_boss,
+        })
         var take_code = res.data.result.take_code.split('')
         that.setData({
           take_code: take_code,
           user: res.data.result
         })
+        wx.hideLoading()
       }
     })
   },
