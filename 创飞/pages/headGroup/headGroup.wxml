@@ -23,13 +23,6 @@
     <view class='dq add'>{{item.area}}{{item.address}}</view>
     <view class='seclect' bindtap='sec' id='{{item.group_id}}'>选择此团长</view>
 </view>
-<view class='div'>
-    <view class='div_distance'>距您1.63km</view>
-    <view class='head_img'></view>
-    <view class='name'>团长：某某某</view>
-    <view class='dq'>当前位置</view>
-    <view class='dq add'>四川省成都市武侯区xx大道xxx号</view>
-    <view class='seclect'>选择此团长</view>
-</view>
+
 
 <view style='height:30rpx;'></view>

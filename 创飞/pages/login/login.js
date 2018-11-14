@@ -9,9 +9,13 @@ Page({
   },
 onGotUserInfo:function(e){
   console.log('用户信息',e)
+
   wx.login({
     success:function(r){
       console.log('登录',r)
+      wx.showLoading({
+        title: '登录中...',
+      })
       wx.request({
         url: getApp().globalData.url + '/home/user/login',
         method: "POST",
@@ -25,9 +29,10 @@ onGotUserInfo:function(e){
           head_img: e.detail.userInfo.avatarUrl,
         },
         success: function (res) {
-          console.log('登录',res)
+          console.log('登录1',res)
           
           if(res.data.status==1){
+            wx.hideLoading()
             wx.setStorage({
               key: 'result',
               data: res.data.result.key,
@@ -41,12 +46,18 @@ onGotUserInfo:function(e){
                   url: '../index/index',
                 })
               }
-          }
-          if (res.data.result.type == 0) {
-            wx.reLaunch({
-              url: '../headGroup/headGroup',
+            if (res.data.result.type == 0) {
+              wx.reLaunch({
+                url: '../headGroup/headGroup',
+              })
+            }
+          }else{
+            wx.hideLoading()
+            wx.showLoading({
+              title: res.data.msg,
             })
           }
+          
 
         }
       })

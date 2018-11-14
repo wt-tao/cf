@@ -26,7 +26,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (wx.getStorageSync('result') == '') {
+      wx.reLaunch({
+        url: '../login/login',
+      })
+    }
   },
 
   /**
@@ -57,6 +61,7 @@ Page({
       },
       success: function (res) {
         console.log('个人中心', res)
+        if(res.data.status==1){
         wx.setStorage({
           key: 'boss',
           data: res.data.result.is_boss,
@@ -67,6 +72,20 @@ Page({
           user: res.data.result
         })
         wx.hideLoading()
+      }
+        else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'loading',
+            duration: 3000,
+            success: function () {
+              wx.reLaunch({
+                url: '../login/login',
+              })
+            }
+          })
+
+        }
       }
     })
   },

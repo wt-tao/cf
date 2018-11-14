@@ -145,17 +145,34 @@ Page({
       success: function (res) {
         console.log('结算', res)
        if(res.data.status==1){
-         wx.showModal({
-           title: '提交成功',
-           content: res.data.msg,
-           success:function(r){
-             if(r.confirm){
-               wx.navigateTo({
-                 url: '../user/user',
-               })
-             }
-           }
+         wx.showLoading({
+           title: '支付请求中...',
          })
+         let timeStamp = res.data.result.timeStamp; //new Date().getTime(),
+             console.log(timeStamp)
+         let nonceStr = res.data.result.nonceStr;
+         let packaged = res.data.result.package;
+         let paySign = res.data.result.paySign;
+         wx.hideLoading()
+                 wx.requestPayment({    
+                   'timeStamp': timeStamp,
+                   'nonceStr': nonceStr, //随机字符串，长度为32个字符以下。
+                   'package': packaged,
+                   'signType': 'MD5',
+                   'paySign': paySign,
+                   'success': function (res) {
+                     wx.showToast({
+                       title: '支付成功',
+                       duration: 2000,
+                       success: function () {
+                         wx.reLaunch({
+
+                           url: '../uesr/uesr',
+                         })
+                       }
+                         })
+                       }
+                     })
        }else{
          wx.showToast({
            title: res.data.msg,
@@ -171,6 +188,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (wx.getStorageSync('result') == '') {
+      wx.reLaunch({
+        url: '../login/login',
+      })
+    }
     wx.showToast({
       title: '加载中...',
       icon:'loading',
@@ -202,6 +224,7 @@ Page({
       },
       success: function (res) {
         console.log('购物车', res)
+        if(res.data.status==1){
         wx.hideLoading()
         if (res.data.result.cartList.length != res.data.result.total_price.num){
             that.setData({
@@ -214,6 +237,19 @@ Page({
           cartList: res.data.result.cartList,
           total_price: res.data.result.total_price
         })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'loading',
+            duration: 3000,
+            success: function () {
+              wx.reLaunch({
+                url: '../login/login',
+              })
+            }
+          })
+
+        }
       }
     })
   },

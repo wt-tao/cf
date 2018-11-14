@@ -151,10 +151,10 @@ function html2json(html, bindName) {
                     imgUrl.splice(0, 1);
                 }
                 imgUrl = wxDiscode.urlToHttpUrl(imgUrl, __placeImgeUrlHttps);
-                node.attr.src =  imgUrl;
+              node.attr.src = 'http://cf.wm50.mingtengnet.com' + imgUrl;
                 node.from = bindName;
                 results.images.push(node);
-                results.imageUrls.push(imgUrl);
+              results.imageUrls.push('http://cf.wm50.mingtengnet.com'+imgUrl);
             }
             
             // 处理font标签样式属性

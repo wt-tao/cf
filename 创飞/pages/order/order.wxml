@@ -7,7 +7,7 @@
     <view class='list_div'>
         <view class='title flex'>
             <view class='name'>{{item.user_name}} | {{item.group_name}} | {{item.address}}</view>
-            <view class='state' >{{(item.order_status==0)?'待付款':(tem.order_status==1)?'待配送':(tem.order_status==2)?'已发货3':(tem.order_status==3)?'待自提':(tem.order_status==4)?'已完成':''}}</view>
+            <view class='state' >{{(item.order_status==0)?'待付款':(item.order_status==1)?'待配送':(item.order_status==2)?'已发货3':(item.order_status==3)?'待自提':(item.order_status==4)?'已完成':''}}</view>
         </view>
         <!-- 商品 -->
         <view class='comdity flex' wx:for='{{item.order_goods}}' wx:for-item='key'>

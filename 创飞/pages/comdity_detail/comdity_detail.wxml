@@ -169,7 +169,7 @@
         </view>
         <view class='buttom flex'>
             <view class='buttom_lis' style='background-color: #FE9E00' bindtap='add'>加入购物车</view>
-            <view class='buttom_lis' style='background-color: #FD5800'>立即购买</view>
+            <view class='buttom_lis' style='background-color: #FD5800' bindtap='pay'>立即购买</view>
         </view>
    </view>
 </view>

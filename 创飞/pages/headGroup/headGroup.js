@@ -41,6 +41,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (wx.getStorageSync('result') == '') {
+      wx.reLaunch({
+        url: '../login/login',
+      })
+    }
     wx.showLoading({
       title: '加载中...',
       duration:2000
@@ -80,12 +85,26 @@ Page({
               },
               success: function (res) {
                 console.log('附近团长', res)
+                if(res.data.status==1){
                 wx.hideLoading()
                 that.setData({
                   list: res.data.result.group,
                   adde: res.data.result.address,
                   address: ops.data.result.address
                 })
+                } else {
+                  wx.showToast({
+                    title: res.data.msg,
+                    icon:'loading',
+                    duration:3000,
+                    success:function(){
+                      wx.reLaunch({
+                        url: '../login/login',
+                      })
+                    }
+                  })
+                 
+                }
               }
             })
          

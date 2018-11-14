@@ -19,6 +19,8 @@
                 <image src="{{item}}" class="slide-image" style='width:100%;height:100%' mode="aspectFill" />
               </swiper-item>
           </block>
+
+          
      </swiper>
 </view>
 <view class='seclect flex'>
@@ -72,7 +74,27 @@
           <view class='list_name_number' style='color: #B2B2B2;margin-left:20rpx;'>已拼{{item.order_count}}份</view>
       </view>
   </view>
-
 </view>
+
+<!-- 商品列表 -->
+<!-- <view class='list flex' hidden='{{show2}}'>
+  <view class='list_com' bindtap='comdity_detail' wx:for='{{countDownList2}}' id='{{item.goods_id}}'>
+      <view class='list_img'>
+          <image src='{{item.original_img}}' style='width:100%;height:100%' mode='aspectFill'/>
+      </view>
+      <view class='time flex'>
+          <view style='margin-left:10rpx;'>距离结束：</view>
+          <view style='margin-left:20rpx;' >{{item.end_time}}</view>
+      </view>
+      <view class='list_name'>{{item.goods_name}}</view>
+      <view class='list_name' style='font-size:28rpx;color: #B2B2B2;'>{{item.goods_remark}}</view>
+      <view class='list_name flex' style='font-size:24rpx;'>
+          <view class='list_name_price' style='color:#ED0000;font-size:28rpx;'>
+            ￥{{item.shop_price}} <text style='color: #B2B2B2;text-decoration:line-through'>￥{{item.original_price}}</text>
+          </view>
+          <view class='list_name_number' style='color: #B2B2B2;margin-left:20rpx;'>已拼{{item.order_count}}份</view>
+      </view>
+  </view>
+</view> -->
 
 <view style='height:20rpx;'></view>

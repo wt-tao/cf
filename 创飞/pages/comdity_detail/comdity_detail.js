@@ -102,9 +102,7 @@ Page({
               title: '添加成功',
               duration:3000,
               success:function(){
-                wx.reLaunch({
-                  url: '../car/car',
-                })
+                
               }
             })
           }else{
@@ -119,10 +117,84 @@ Page({
       })
     }
   },
+  pay:function(){
+    var that = this
+    var goods_id = this.data.goods_id
+    var goods_num = this.data.num
+    var goods_spec = this.data.ids
+    if (goods_spec == undefined) {
+      wx.showToast({
+        title: '请选择规格',
+        icon: 'loading',
+        duration: 2000,
+      })
+    } else {
+      wx.request({
+        url: getApp().globalData.url + '/home/payment/immediately_pay',
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded;charset=utf-8', // 默认值
+          // 'content-type': 'application/json;charset=utf-8',
+        },
+        data: {
+          goods_id: goods_id,
+          key: wx.getStorageSync('result'),
+          goods_num: goods_num,
+          goods_spec: goods_spec,
+        },
+        success: function (res) {
+          console.log('直接购买', res)
+          if (res.data.status == 1) {
+            wx.showLoading({
+              title: '支付请求中...',
+            })
+            let timeStamp = res.data.result.timeStamp; //new Date().getTime(),
+            console.log(timeStamp)
+            let nonceStr = res.data.result.nonceStr;
+            let packaged = res.data.result.package;
+            let paySign = res.data.result.paySign;
+            wx.hideLoading()
+            wx.requestPayment({
+              'timeStamp': timeStamp,
+              'nonceStr': nonceStr, //随机字符串，长度为32个字符以下。
+              'package': packaged,
+              'signType': 'MD5',
+              'paySign': paySign,
+              'success': function (res) {
+                wx.showToast({
+                  title: '支付成功',
+                  duration: 2000,
+                  success: function () {
+                    wx.reLaunch({
+
+                      url: '../uesr/uesr',
+                    })
+                  }
+                })
+              }
+            })
+          } else {
+            wx.showToast({
+              title: res.data.msg,
+              icon: "loading",
+              duration: 3000,
+            })
+          }
+
+
+        }
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (wx.getStorageSync('result') == '') {
+      wx.reLaunch({
+        url: '../login/login',
+      })
+    }
     console.log(options)
     wx.showLoading({
       title: '加载中...',

@@ -41,7 +41,7 @@
 .com_list_text{width: 100%;text-align: center;font-size: 28rpx;color: #000000;margin-top:-70rpx;}
 .imgs{height: 50rpx;width: 100%;border: 1rpx solid black;}
 .img{border-top-left-radius: 50%;border-top-right-radius: 50%;border-bottom-left-radius: 50%;border-bottom-right-radius: 50%;}
-.wxp{width: 92%;margin-left: 4%;margin-top: 10rpx;}
+.wxp{width: 92%;margin-left: 4%;margin-top: 10rpx;overflow: hidden}
 
 .bg {
   display: block;

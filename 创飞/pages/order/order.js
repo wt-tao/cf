@@ -11,6 +11,35 @@ Page({
     this.setData({
       ids: e.currentTarget.id
     })
+    wx.showLoading({
+      title: '加载中...',
+      duration: 2000
+    })
+    if (e.currentTarget.id == 9) {
+      e.currentTarget.id = ''
+    }
+    var type = wx.getStorageSync('boss')
+    var that = this
+    wx.request({
+      url: getApp().globalData.url + '/home/order/index',
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8', // 默认值
+        // 'content-type': 'application/json;charset=utf-8',
+      },
+      data: {
+        key: wx.getStorageSync('result'),
+        type: type,
+        order_status: e.currentTarget.id
+      },
+      success: function (res) {
+        console.log('订单', res)
+        that.setData({
+          lists: res.data.result,
+        })
+        wx.hideLoading()
+      }
+    })
   },
   order_detail:function(e){
     wx.navigateTo({

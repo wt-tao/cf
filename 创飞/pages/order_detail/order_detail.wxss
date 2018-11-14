@@ -23,3 +23,4 @@ page{background-color: #EFEFF4}
 .numbers{text-align: right;width: 50%;}
 .order_card{margin-top: 30rpx;line-height: 60rpx;background-color: white;color: #323232;font-size: 28rpx;}
 .img{border-top-left-radius: 50%;border-top-right-radius: 50%;border-bottom-left-radius: 50%;border-bottom-right-radius: 50%;}
+.fk_button{width: 100%;text-align: center;line-height: 80rpx;font-size: 32rpx;background-color: #FFE574;color: #4F4B3C;position: fixed;bottom: 0;}
