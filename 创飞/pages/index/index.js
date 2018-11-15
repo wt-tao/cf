@@ -8,8 +8,25 @@ const app = getApp()
 Page({
   data: {
     ids: 1,
+    keywords:'',
     countDownList: [],
-    actEndTimeList: []
+    
+  },
+  searcg_input:function(e){
+    this.setData({
+      keywords:e.detail.value
+    })
+  },
+  search:function(){   
+      var that=this
+      this.setData({
+        ids:'',
+        keywords: this.data.keywords
+      })
+    this.main()
+    this.setData({
+      s1: false
+    })
   },
   list:function(e){
     // console.log(e)
@@ -19,9 +36,13 @@ Page({
      duration:3000,
    })
     this.setData({
+      keywords:'',
       ids: e.currentTarget.id
     })
     var that = this
+    var data = {
+      cat_id: e.currentTarget.id,
+    }
     this.main()
     
   },
@@ -49,11 +70,10 @@ Page({
         url: '../login/login',
       })
     }
-   
     this.main()
   },
 
-main:function(){
+  main: function (){
   var that = this
   wx.request({
     url: getApp().globalData.url + '/home/goods/goodsList',
@@ -64,9 +84,21 @@ main:function(){
     },
     data: {
       cat_id: this.data.ids,
+      keywords: this.data.keywords,
     },
     success: function (res) {
       console.log('商品列表', res)
+      if (res.data.result.length==0){
+        wx.showToast({
+          title: '暂无商品',
+          icon: 'loading',
+          duration: 3000,
+        })
+        that.setData({
+          countDownList: res.data.result,
+        })
+      }
+     else if (res.data.status==1){
       wx.hideLoading()
       var goodslist = res.data.result
       for (var i = 0; i < goodslist.length; i++) {
@@ -105,11 +137,15 @@ main:function(){
         }
       }
       that.setData({
-        // s1: false,
-        // s2: true,
         countDownList: goodslist,
       })
-
+    }else{
+      wx.showToast({
+        title: res.data.msg,
+        icon:'loading',
+        duration:3000,
+      })
+    }
     }
   });
 
@@ -118,6 +154,11 @@ main:function(){
 
 
   onShow:function(){
+    this.setData({
+      ids:1,
+      s1: true,
+      keywords:'',
+    })
     wx.showLoading({
       title: '加载中...',
       duration: 2000

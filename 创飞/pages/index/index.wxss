@@ -15,7 +15,7 @@
 .seclect_x{font-size:  22rpx;color: #B6B6B6;}
 .comdity_img{width: 92%;margin-left: 4%;margin-top: 30rpx;height:200rpx;border-radius: 20rpx;}
 .comdity_img_left{width: 120rpx;position: absolute;top: 660rpx;left:4%;}
-.tabber{margin-top: 50rpx;width: 100%;height: 60rpx;line-height: 50rpx;}
+.tabber{margin-top: 30rpx;width: 100%;height: 60rpx;line-height: 50rpx;}
 .tabber_list{width: 160rpx;height: 50rpx;margin-left: 30rpx;font-size: 28rpx;text-align: center;border-radius: 30rpx;color: #161616;}
 .on{background-color: #FFE574}
 .list{width: 100%;margin-top: 30rpx;flex-wrap: wrap;}
@@ -26,3 +26,7 @@
 .list_name_price{text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width:60%;}
 .list_name_number{text-align: right;width:40%;}
 .img{border-top-left-radius: 50%;border-top-right-radius: 50%;border-bottom-left-radius: 50%;border-bottom-right-radius: 50%;}
+
+/* 搜索 */
+.search{width: 94%;margin-left: 3%;height: 80rpx;margin-top: 20rpx;border: 1rpx solid #CFCFCF;border-radius: 10rpx;}
+.search_input{width: 83%;padding-left: 3%;height: 80rpx;font-size: 28rpx;}

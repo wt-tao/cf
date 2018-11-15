@@ -46,8 +46,13 @@
   <image src='../../img/1_08.png' mode='widthFix' class='comdity_img_left'/>
 </view>
 
+<view class='search flex'>
+    <input class='search_input' placeholder='请输入关键字搜索产品' placeholder-style='fong-size:28rpx;color:#A7A7A7' bindinput='searcg_input' value='{{keywords}}'/>
+    <image src='../../img/1_05.png' style='width:45rpx;margin-top:17rpx;margin-left:30rpx;' mode='widthFix' bindtap='search'/>
+</view>
+
 <!-- 列表 -->
-<view class='tabber'>
+<view class='tabber' wx:if='{{s1}}'>
   <scroll-view scroll-x style=" white-space: nowrap; display: flex">
     <block wx:for='{{list}}'>
       <view class='tabber_list {{item.id==ids?"on":""}}'  bindtap='list'  id='{{item.id}}' style='display: inline-block'>{{item.name}}</view>
