@@ -10,14 +10,41 @@ Page({
     countdown: '', 
     endDate2: '',
     num:1,
+	item:'请选择规格',
+  
+    clientHeight:'100%',
+    overflow: 'auto',
   },
   ggtc:function(){
+    
+    var height = wx.getSystemInfoSync().windowHeight
+   console.log(height)
     this.setData({
+      clientHeight: height+'px',
+      overflow:'hidden',
       sort: true,
     })
   },
+  ggtcs:function(e){
+    if (e.currentTarget.id!=1){
+        wx.showModal({
+          title: '暂未开团',
+          content: '您选购的商品暂未开团，请等待开团后抢购',
+        })
+    }else{
+      var height = wx.getSystemInfoSync().windowHeight
+      console.log(height)
+      this.setData({
+        clientHeight: height + 'px',
+        overflow: 'hidden',
+        sort: true,
+      })
+    }
+  },
   bindSorttap:function(){
     this.setData({
+      clientHeight: '100%',
+      overflow: 'auto',
       sort:false,
     })
   },
@@ -39,16 +66,14 @@ Page({
     }
   },
   map:function(){
+    var list=this.data.list
     var that=this
-  
-
     wx.getLocation({
       type: "gcj02",
       success: function (res) {
-      
         wx.openLocation({
-          longitude: res.longitude,
-          latitude: res.latitude
+          longitude: parseInt(list.take_address.longitude),
+          latitude: parseInt(list.take_address.latitude)
         })
       }
     })
@@ -66,6 +91,7 @@ Page({
   // 选择规格
   guige:function(e){
     this.setData({
+		item:e.currentTarget.dataset.id,
       ids: e.currentTarget.id
     })
   },
@@ -102,7 +128,11 @@ Page({
               title: '添加成功',
               duration:3000,
               success:function(){
-                
+                that.setData({
+                  clientHeight: '100%',
+                  overflow: 'auto',
+                  sort: false,
+                })
               }
             })
           }else{
@@ -195,6 +225,9 @@ Page({
         url: '../login/login',
       })
     }
+    this.setData({
+      id:options.id
+    })
     console.log(options)
     wx.showLoading({
       title: '加载中...',
@@ -317,6 +350,20 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    var list=this.data.list
+    return {
+      title: list.goods_name,
+      // desc: that.data.common.introduction,
+      imageUrl: list.header_original_img+list.original_img[0],
+      path: '/pages/comdity_detail/comdity_detail?id=' + this.data.id,
 
+      success: function (res) {
+        console.log(res)
+        // 转发成功
+      },
+     fail: function (res) {
+        // 转发失败
+      }
+  }
   }
 })

@@ -9,11 +9,11 @@
           <view class='cl_add'>{{group.area}}{{group.address}}</view>
       </view>
   </view>
-  <view style='height:30rpx;'></view>
+  <view style='height:20rpx;'></view>
 
   <!-- 列表 -->
-<view class='list flex' wx:for='{{cartList}}'>
-    <image src='{{item.selected==0?"../../img/sec (1).png":"../../img/sec (2).png"}}' style='width:50rpx;margin-left:30rpx;margin-top:100rpx;' mode='widthFix' bindtap="selectList"  id='{{item.id}}'  data-selected='{{item.selected}}'/>
+<view class='list flex' wx:for='{{cartList}}' bindtap='com' id='{{item.goods_id}}'>
+    <image src='{{item.selected==0?"../../img/sec (1).png":"../../img/sec (2).png"}}' style='width:50rpx;margin-left:30rpx;margin-top:100rpx;' mode='widthFix' catchtap="selectList"  id='{{item.id}}'  data-selected='{{item.selected}}'/>
     <!-- <image src='../../img/sec (2).png' style='width:50rpx;margin-left:30rpx;margin-top:100rpx;' mode='widthFix' bindtap="selectLists"  id='{{item.id}}' hidden='{{s2}}' data-selected='0'/> -->
     <view class='com_detail'>
         <image src='{{item.original_img}}' style='width:100%;height:100%' mode='aspectFill'/>
@@ -31,6 +31,7 @@
             </view>
           </view>
     </view>
+    <image src='../../img/F2800566771AEC4656EB80D83BD0ACBC_05.png' style='width:40rpx;margin-top:10rpx;' mode='widthFix' catchtap='del' id='{{item.id}}'/>
 </view>
 
 

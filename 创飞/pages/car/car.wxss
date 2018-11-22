@@ -1,14 +1,14 @@
 /* pages/car/car.wxss */
 page{ background-color: #EFEFF4}
-.list{width: 100%;height: 250rpx;border-bottom: 1rpx solid #F9F9F9 ;background-color: white;}
+.list{width: 100%;border-bottom: 1rpx solid #F9F9F9 ;background-color: white;padding-bottom: 20rpx;margin-top:10rpx;}
 .head_img{margin-left: 4%;width: 120rpx;height:120rpx;border-radius: 50%;margin-top:30rpx;}
 .list_center{width: 75%;margin-left: 50rpx;margin-top: 30rpx;height: 170rpx;}
 .tz_name{width: 100%;color: #252525;font-size: 30rpx;line-height: 50rpx;font-weight: bolder;}
 .T_name{width: 100%;color: #252525;font-size: 28rpx;font-weight: bolder;text-overflow: ellipsis;overflow:hidden;white-space: nowrap;margin-top:10rpx;}
 .cl_add{width: 100%;flex-wrap: wrap;color: #BFBFBF;font-size: 28rpx;line-height: 50rpx;margin-top:10rpx;}
 .com_detail{width: 20%;height: 150rpx;margin-top: 50rpx;margin-left: 30rpx;}
-.list_right{width: 63%;height: 150rpx;margin-top: 37rpx;margin-left:30rpx;}
-.name{width: 100%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font-size: 32rpx;line-height: 60rpx;color: #373737}
+.list_right{width: 53%;margin-top: 37rpx;margin-left:30rpx;}
+.name{width: 100%;font-size: 32rpx;line-height: 50rpx;color: #373737}
 .money{width: 100%;height: 100rpx;line-height: 100rpx;margin-top: 40rpx;}
 .price{color: #ED1313;width: 40%;font-size: 30rpx;}
 .number{color: #0A0A0A;font-size: 24rpx;}

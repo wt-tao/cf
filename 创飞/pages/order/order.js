@@ -50,10 +50,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     wx.showLoading({
       title: '加载中...',
       duration: 2000
     })
+    if (options.uid==undefined){
     console.log(options)
       wx.setNavigationBarTitle({
         title: options.title,
@@ -65,7 +67,7 @@ Page({
       options.id=''
     }
     var type = wx.getStorageSync('boss')
-    var that = this
+    
     wx.request({
       url: getApp().globalData.url + '/home/order/index',
       method: "POST",
@@ -86,6 +88,34 @@ Page({
         wx.hideLoading()
       }
     })
+    }
+    else{
+      this.setData({
+        ids: options.id
+      })
+      wx.setNavigationBarTitle({
+        title: '全部订单',
+      })
+      wx.request({
+        url: getApp().globalData.url + '/home/order/get_user_order',
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded;charset=utf-8', // 默认值
+          // 'content-type': 'application/json;charset=utf-8',
+        },
+        data: {
+          key: wx.getStorageSync('result'),
+          user_id : options.uid,
+        },
+        success: function (res) {
+          console.log('团员订单', res)
+          that.setData({
+            lists: res.data.result,
+          })
+          wx.hideLoading()
+        }
+      })
+    }
   },
 
   /**

@@ -26,9 +26,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this
     if (wx.getStorageSync('result') == '') {
       wx.reLaunch({
         url: '../login/login',
+      })
+    }
+    else{
+      wx.request({
+        url: getApp().globalData.url + '/home/user/getwxacode',
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded;charset=utf-8', // 默认值
+          // 'content-type': 'application/json;charset=utf-8',
+        },
+        data: {
+          key: wx.getStorageSync('result')
+        },
+        success: function (res) {
+          console.log('生成二维码', res)
+          that.setData({
+            ps_code: res.data.result
+          })
+       
+        }
       })
     }
   },

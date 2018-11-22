@@ -14,18 +14,19 @@
 .seclect_s{font-size:  36rpx;color: #393939;font-weight:bolder;}
 .seclect_x{font-size:  22rpx;color: #B6B6B6;}
 .comdity_img{width: 92%;margin-left: 4%;margin-top: 30rpx;height:200rpx;border-radius: 20rpx;}
-.comdity_img_left{width: 120rpx;position: absolute;top: 660rpx;left:4%;}
+.comdity_img_left{width: 120rpx;position: absolute;top: 480rpx;left:4%;}
 .tabber{margin-top: 30rpx;width: 100%;height: 60rpx;line-height: 50rpx;}
-.tabber_list{width: 160rpx;height: 50rpx;margin-left: 30rpx;font-size: 28rpx;text-align: center;border-radius: 30rpx;color: #161616;}
+.tabber_list{width: 150rpx;height: 50rpx;margin-left: 10rpx;font-size: 28rpx;text-align: center;border-radius: 30rpx;color: #161616;}
 .on{background-color: #FFE574}
 .list{width: 100%;margin-top: 30rpx;flex-wrap: wrap;}
-.list_com{height: 430rpx;border: 1rpx solid #CCCCCC; border-radius: 30rpx;margin-top: 30rpx;margin-left: 4%;width: 327rpx;}
-.list_img{width: 90%;margin-left: 5%;margin-top: 15rpx;height: 200rpx;}
+.list_com{height: 550rpx;border: 1rpx solid #CCCCCC; border-radius: 30rpx;margin-top: 10rpx;margin-left:1%;width: 48%;}
+.list_img{width: 96%;margin-left: 2%;margin-top: 10rpx;height: 350rpx;}
 .time{width: 95%;margin-left: 2.5%;background-color: #F26600;color: white;font-size: 28rpx;height: 40rpx;line-height: 40rpx;}
 .list_name{width: 95%;margin-left: 2.5%;font-size: 30rpx;line-height: 50rpx;color:#333333;height:50rpx;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 .list_name_price{text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width:60%;}
 .list_name_number{text-align: right;width:40%;}
 .img{border-top-left-radius: 50%;border-top-right-radius: 50%;border-bottom-left-radius: 50%;border-bottom-right-radius: 50%;}
+.com_img{border-top-left-radius: 10rpx;border-top-right-radius: 10rpx;}
 
 /* 搜索 */
 .search{width: 94%;margin-left: 3%;height: 80rpx;margin-top: 20rpx;border: 1rpx solid #CFCFCF;border-radius: 10rpx;}

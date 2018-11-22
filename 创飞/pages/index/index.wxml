@@ -16,14 +16,14 @@
      <swiper indicator-dots="true" autoplay="true" interval="3000" indicator-color='white' indicator-active-color='#FF7F01' duration="1000" class="swiper-item" circular="true">
           <block wx:for="{{banner}}" wx:for-index="index">
               <swiper-item>
-                <image src="{{item}}" class="slide-image" style='width:100%;height:100%' mode="aspectFill" />
+                <image src="{{item.img}}" id='{{item.id}}' class="slide-image" style='width:100%;height:100%' mode="aspectFill" bindtap='nack' />
               </swiper-item>
           </block>
 
           
      </swiper>
 </view>
-<view class='seclect flex'>
+<!-- <view class='seclect flex'>
   <view class='seclect_com flex' bindtap='recruit'>
       <image src='../../img/2.png' class='seclect_img' mode='widthFix'/>
       <view class='seclect_con'>
@@ -38,13 +38,13 @@
           <view class='seclect_x'>快速入驻 享受优质客源</view>
       </view>
   </view>
-</view>
-<view style='height:30rpx;background-color:#EFEFF3'></view>
-
+</view> -->
+<!-- <view style='height:30rpx;background-color:#EFEFF3'></view> -->
+<!-- 
 <view class='comdity_img'>
   <image src='../../img/2_05.jpg' style='width:100%' mode='widthFix' />
   <image src='../../img/1_08.png' mode='widthFix' class='comdity_img_left'/>
-</view>
+</view> -->
 
 <view class='search flex'>
     <input class='search_input' placeholder='请输入关键字搜索产品' placeholder-style='fong-size:28rpx;color:#A7A7A7' bindinput='searcg_input' value='{{keywords}}'/>
@@ -64,11 +64,11 @@
 <view class='list flex'>
   <view class='list_com' bindtap='comdity_detail' wx:for='{{countDownList}}' id='{{item.goods_id}}'>
       <view class='list_img'>
-          <image src='{{item.original_img}}' style='width:100%;height:100%' mode='aspectFill'/>
+          <image src='{{item.original_img}}' style='width:100%;height:100%' mode='aspectFill' class='com_img'/>
       </view>
       <view class='time flex'>
-          <view style='margin-left:10rpx;'>距离结束：</view>
-          <view style='margin-left:20rpx;' >{{item.end_time}}</view>
+          <view style='margin-left:10rpx;'>{{ids==1?'距离结束：':'等待拼团开始'}}</view>
+          <view style='margin-left:20rpx;' >{{ids==1?item.end_time:''}}</view>
       </view>
       <view class='list_name'>{{item.goods_name}}</view>
       <view class='list_name' style='font-size:28rpx;color: #B2B2B2;'>{{item.goods_remark}}</view>

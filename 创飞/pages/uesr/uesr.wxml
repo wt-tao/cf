@@ -61,7 +61,7 @@
         <view class='ewm_title'>提货码</view>
         <view class='ewm_bz'>提货时，向团长出示二维码提货</view>
         <view class='ewm_img'>
-            <image src='{{user.qr_code}}' style='width:100%;' mode='widthFix'/>
+            <image src='{{ps_code}}' style='width:100%;' mode='widthFix'/>
         </view>
         <view class='ewm_bz' style='margin-top:20rpx;'>也可使用提货码</view>
         <view class='ewm_button' bindtap='obtain'>获取提货码</view>

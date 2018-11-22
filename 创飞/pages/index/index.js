@@ -1,7 +1,7 @@
 //index.js
 
 
-
+var codes = require('../../utils/time.js')
 //获取应用实例
 const app = getApp()
 
@@ -46,6 +46,19 @@ Page({
     this.main()
     
   },
+  nack:function(e){
+    var id = e.currentTarget.id
+    if(id==2){
+      wx.navigateTo({
+        url: '../recruit/recruit',
+      })
+    }
+    if(id==3){
+      wx.navigateTo({
+        url: '../join/join',
+      })
+    }
+  },
   // 团长
   recruit:function(){
     wx.navigateTo({
@@ -74,7 +87,7 @@ Page({
   },
 
   main: function (){
-  var that = this
+    var _this = this;　　　　//防止this对象的混杂，用一个变量来保存
   wx.request({
     url: getApp().globalData.url + '/home/goods/goodsList',
     method: "POST",
@@ -94,12 +107,12 @@ Page({
           icon: 'loading',
           duration: 3000,
         })
-        that.setData({
+        _this.setData({
           countDownList: res.data.result,
         })
       }
      else if (res.data.status==1){
-      wx.hideLoading()
+        wx.hideLoading()
       var goodslist = res.data.result
       for (var i = 0; i < goodslist.length; i++) {
         var date = new Date();
@@ -126,17 +139,16 @@ Page({
 
           goodslist[i].end_time = d + ":" + m + ":" + s;
           //递归每秒调用countTime方法，显示动态时间效果
-          setTimeout(that.main, 1000);
-
+          // setTimeout(that.main, 1000);
+          codes.getCode(_this, leftTime);　　//调用倒计时函数
+          // wx.hideLoading()
         }
         else {
+          goodslist[i].end_time = '已截止';
           console.log('已截止')
-          that.setData({
-            countdown: '00:00:00'
-          })
         }
       }
-      that.setData({
+        _this.setData({
         countDownList: goodslist,
       })
     }else{
@@ -186,7 +198,7 @@ Page({
           })
           wx.hideLoading()
         }
-      }) },3000)
+      }) },1000)
    
   },
 

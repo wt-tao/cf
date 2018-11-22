@@ -9,6 +9,38 @@ Page({
     a1: true,
     a2: false,
   },
+  com:function(e){
+    wx.navigateTo({
+      url: '../comdity_detail/comdity_detail?id=' + e.currentTarget.id,
+    })
+  },
+  del:function(e){
+    var that = this
+    wx.request({
+      url: getApp().globalData.url + '/home/cart/delCart',
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8', // 默认值
+        // 'content-type': 'application/json;charset=utf-8',
+      },
+      data: {
+        key: wx.getStorageSync('result'),
+        id: e.currentTarget.id
+      },
+      success: function (res) {
+        console.log('删除', res)
+        if (res.data.status == 1) {
+          wx.showToast({
+            title: '删除成功',
+            duration:2000,
+          })
+          that.onShow()
+        
+        }
+
+      }
+    })
+  },
   // 全选
   aselectList: function (e) {
     console.log(e)
