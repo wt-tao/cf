@@ -19,8 +19,6 @@
                 <image src="{{item.img}}" id='{{item.id}}' class="slide-image" style='width:100%;height:100%' mode="aspectFill" bindtap='nack' />
               </swiper-item>
           </block>
-
-          
      </swiper>
 </view>
 <!-- <view class='seclect flex'>
@@ -54,6 +52,7 @@
 <!-- 列表 -->
 <view class='tabber' wx:if='{{s1}}'>
   <scroll-view scroll-x style=" white-space: nowrap; display: flex">
+  <view class='tabber_list {{ids==0?"on":""}}'  bindtap='list'  id='0' style='display: inline-block'>全部</view>
     <block wx:for='{{list}}'>
       <view class='tabber_list {{item.id==ids?"on":""}}'  bindtap='list'  id='{{item.id}}' style='display: inline-block'>{{item.name}}</view>
     </block>
@@ -63,13 +62,14 @@
 <!-- 商品列表 -->
 <view class='list flex'>
   <view class='list_com' bindtap='comdity_detail' wx:for='{{countDownList}}' id='{{item.goods_id}}'>
+      <view class='bq'>{{item.tips}}</view>
       <view class='list_img'>
           <image src='{{item.original_img}}' style='width:100%;height:100%' mode='aspectFill' class='com_img'/>
       </view>
-      <view class='time flex'>
+      <!-- <view class='time flex'>
           <view style='margin-left:10rpx;'>{{ids==1?'距离结束：':'等待拼团开始'}}</view>
           <view style='margin-left:20rpx;' >{{ids==1?item.end_time:''}}</view>
-      </view>
+      </view> -->
       <view class='list_name'>{{item.goods_name}}</view>
       <view class='list_name' style='font-size:28rpx;color: #B2B2B2;'>{{item.goods_remark}}</view>
       <view class='list_name flex' style='font-size:24rpx;'>
@@ -78,7 +78,17 @@
           </view>
           <view class='list_name_number' style='color: #B2B2B2;margin-left:20rpx;'>已拼{{item.order_count}}份</view>
       </view>
+
+    <block wx:if='{{item.end_time=="已截止"||item.store_count<=0}}'>
+       <view class='list_h'></view>
+       <view class='heik'></view>
+       <view class='kuangk'>{{(start==1)?"即将开始":(item.store_count<=0)?"已售罄":(item.end_time=="已截止")?"已截止":""}}</view>
+    </block>
+   
   </view>
+
+  
+ 
 </view>
 
 <!-- 商品列表 -->

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    // typ:false;
   },
   sec: function (e) {
     var that = this

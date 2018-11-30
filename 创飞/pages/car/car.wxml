@@ -13,7 +13,7 @@
 
   <!-- 列表 -->
 <view class='list flex' wx:for='{{cartList}}' bindtap='com' id='{{item.goods_id}}'>
-    <image src='{{item.selected==0?"../../img/sec (1).png":"../../img/sec (2).png"}}' style='width:50rpx;margin-left:30rpx;margin-top:100rpx;' mode='widthFix' catchtap="selectList"  id='{{item.id}}'  data-selected='{{item.selected}}'/>
+    <image src='{{url}}{{item.selected==0?"/public/images/no_1.png":"/public/images/yes_1.png"}}' style='width:40rpx;margin-left:30rpx;margin-top:105rpx;' mode='widthFix' catchtap="selectList"  id='{{item.id}}'  data-selected='{{item.selected}}'/>
     <!-- <image src='../../img/sec (2).png' style='width:50rpx;margin-left:30rpx;margin-top:100rpx;' mode='widthFix' bindtap="selectLists"  id='{{item.id}}' hidden='{{s2}}' data-selected='0'/> -->
     <view class='com_detail'>
         <image src='{{item.original_img}}' style='width:100%;height:100%' mode='aspectFill'/>
@@ -24,9 +24,9 @@
             <view class='price'>￥{{item.goods_price}}<text style='color:#B5B5B5;font-size:28rpx;text-decoration:line-through'>￥{{item.original_price}}</text></view>
             <view class='price number'>
                 <view class='jj flex'>
-                    <view class='icon' bindtap='num' data-number='0' data-num='{{item.goods_num}}' id='{{item.id}}'>-</view>
+                    <view class='icon' catchtap='num' data-number='0' data-num='{{item.goods_num}}' id='{{item.id}}'>-</view>
                     <view class='icon'>{{item.goods_num}}</view>
-                    <view class='icon' style='border:none' bindtap='num' data-number='1' data-num='{{item.goods_num}}' id='{{item.id}}'>+</view>
+                    <view class='icon' style='border:none' catchtap='num' data-number='1' data-num='{{item.goods_num}}' id='{{item.id}}'>+</view>
                 </view>
             </view>
           </view>
@@ -41,8 +41,8 @@
 
 <view class='button flex'>
     <view class='secAll flex'>
-        <image src='../../img/sec (1).png' style='width:45rpx;margin-left:30rpx;margin-top:30rpx;' mode='widthFix' bindtap="aselectList"   hidden='{{a1}}' data-selected='1'/>
-    <image src='../../img/sec (2).png' style='width:45rpx;margin-left:30rpx;margin-top:30rpx;' mode='widthFix' bindtap="aselectLists"   hidden='{{a2}}' data-selected='0'/>
+        <image src='{{url}}/public/images/no_1.png' style='width:45rpx;margin-left:30rpx;margin-top:30rpx;' mode='widthFix' bindtap="aselectList"   hidden='{{a1}}' data-selected='1'/>
+    <image src='{{url}}/public/images/yes_1.png' style='width:45rpx;margin-left:30rpx;margin-top:30rpx;' mode='widthFix' bindtap="aselectLists"   hidden='{{a2}}' data-selected='0'/>
         <view style='margin-left:20rpx;'>全选</view>
     </view>
     <view class='left'>合计：<text style='color:#ED0707'>￥{{total_price.total_fee}}</text></view>

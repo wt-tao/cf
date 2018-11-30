@@ -31,21 +31,21 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "/img/tc-1 (2).png",
-        "selectedIconPath": "/img/tc-1 (1).png",
+        "iconPath": "/img/home-2.png",
+        "selectedIconPath": "/img/home.png",
         "text": "主页"
       },
       {
         "pagePath": "pages/car/car",
-        "iconPath": "img/tc-1 (3).png",
-        "selectedIconPath": "img/tc-1 (4).png",
+        "iconPath": "img/cart-2.png",
+        "selectedIconPath": "img/cart.png",
         "text": "购物车"
       },
    
       {
         "pagePath": "pages/uesr/uesr",
-        "iconPath": "img/tc-1 (5).png",
-        "selectedIconPath": "img/tc-1 (6).png",
+        "iconPath": "img/user-2.png",
+        "selectedIconPath": "img/user.png",
         "text": "我的"
       }
     ]

@@ -1,6 +1,5 @@
 // pages/recruit/recruit.js
 // 引入SDK核心类
-var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
 Page({
 
   /**
@@ -56,64 +55,65 @@ Page({
       })
     }
     else{
-      // // 实例化API核心类
-      // var qqmapsdk = new QQMapWX({
-      //   key: 'QPHBZ-INS36-47USQ-EEPJW-E4NR3-FIF42'
-      // });
-      // // 调用接口
-      // qqmapsdk.search({
-      //   keyword: this.data.area + this.data.addres,
-      //   success: function (res) {
-      //     console.log(res);
-      //   },
-      //   fail: function (res) {
-      //     console.log(res);
-      //   },
-     
-      // })
+      var addr = this.data.area + this.data.addres
+      console.log(addr)
       wx.request({
-        url: getApp().globalData.url + '/home/group/addGroup',
-        method: "POST",
-        header: {
-          'content-type': 'application/x-www-form-urlencoded;charset=utf-8', // 默认值
-          // 'content-type': 'application/json;charset=utf-8',
-        },
-        data: {
-          key: wx.getStorageSync('result'),
-          user_name: this.data.user_name,
-          area: this.data.area,
-          address: this.data.addres,
+        url: 'https://apis.map.qq.com/ws/geocoder/v1/?address=' + addr + '&key=QPHBZ-INS36-47USQ-EEPJW-E4NR3-FIF42', data: {},
+        header: { 'Content-Type': 'application/json' },
+        success: function (ops) {
+          console.log(ops)
+           wx.request({
+            url: getApp().globalData.url + '/home/group/addGroup',
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded;charset=utf-8', // 默认值
+              // 'content-type': 'application/json;charset=utf-8',
+            },
+            data: {
+              key: wx.getStorageSync('result'),
+              user_name: that.data.user_name,
+              area: that.data.area,
+              address: that.data.addres,
+              lng: ops.data.result.location.lng,
+              lat: ops.data.result.location.lat,
+              phone: that.data.phone,
+            },
+            success: function (res) {
+              console.log('团长招募', res)
+              if (res.data.status==1){
+                wx.showModal({
+                  title: '提交成功',
+                  content: res.data.msg,
+                  success:function(r){
 
-          phone: this.data.phone,
-        },
-        success: function (res) {
-          console.log('团长招募', res)
-          if (res.data.status==1){
-            wx.showModal({
-              title: '提交成功',
-              content: res.data.msg,
-              success:function(r){
-              
-                if(r.confirm){
-                  wx.navigateBack({
-                    delta:1
-                  })
-                }
+                    if(r.confirm){
+                      wx.navigateBack({
+                        delta:1
+                      })
+                    }
+                  }
+                })
+            }
+              else {
+                wx.showModal({
+                  title: '出现错误',
+                  content: res.data.msg,
+                  success: function (r) {
+
+                  }
+                })
               }
-            })
-        }
-          else {
-            wx.showModal({
-              title: '出现错误',
-              content: res.data.msg,
-              success: function (r) {
-              
-              }
-            })
-          }
-        }
-      
+            }
+
       })
+          // that.setData({
+          //   list: ops.data.data,
+
+          // })
+        }
+      })
+     
+     
     }
   },
   /**

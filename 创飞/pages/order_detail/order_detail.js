@@ -142,6 +142,7 @@ Page({
    */
   onLoad: function (options) {
       console.log(options)
+    var type = wx.getStorageSync('boss')
     wx.showLoading({
       title: '加载中...',
       duration: 2000
@@ -162,6 +163,7 @@ Page({
         console.log('订单详情', res)
         that.setData({
           lists: res.data.result,
+          type: type,
         })
         wx.hideLoading()
       }

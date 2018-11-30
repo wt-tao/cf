@@ -12,5 +12,5 @@
     <view class='button' bindtap='tj'>立即提交</view>
 
     <view class='ts' style='margin-top:50rpx;'>提交信息，我们将在审核后与您联系</view>
-    <view class='ts'>如有疑问，请咨询：111-111-1111</view>
+    <view class='ts'>如有疑问，请咨询：18228077100</view>
 </view>

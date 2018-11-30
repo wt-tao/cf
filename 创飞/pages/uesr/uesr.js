@@ -8,6 +8,7 @@ Page({
     addres: true,
   },
   bindAddrestap:function(){
+    this.onShow()
     this.setData({
       addres:true
     })
@@ -32,26 +33,7 @@ Page({
         url: '../login/login',
       })
     }
-    else{
-      wx.request({
-        url: getApp().globalData.url + '/home/user/getwxacode',
-        method: "POST",
-        header: {
-          'content-type': 'application/x-www-form-urlencoded;charset=utf-8', // 默认值
-          // 'content-type': 'application/json;charset=utf-8',
-        },
-        data: {
-          key: wx.getStorageSync('result')
-        },
-        success: function (res) {
-          console.log('生成二维码', res)
-          that.setData({
-            ps_code: res.data.result
-          })
-       
-        }
-      })
-    }
+  
   },
 
   /**

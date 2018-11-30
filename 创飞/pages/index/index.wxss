@@ -19,8 +19,15 @@
 .tabber_list{width: 150rpx;height: 50rpx;margin-left: 10rpx;font-size: 28rpx;text-align: center;border-radius: 30rpx;color: #161616;}
 .on{background-color: #FFE574}
 .list{width: 100%;margin-top: 30rpx;flex-wrap: wrap;}
+
+.list_h{width: 100%;height: 550rpx;background-color: white;position: relative;z-index: 1002;margin-top:-550rpx;opacity: 0.4}
+.kuangk{width: 100%;height:60rpx;text-align: center;line-height: 60rpx;font-size: 28rpx;color: white;position: relative;z-index: 1009;margin-top:-60rpx;}
+.heik{width: 70%;margin-left: 15%;background-color: black;opacity: 0.5;position: relative;z-index: 1003;margin-top: -350rpx;height:60rpx;}
+
+.bq{width: 60rpx;height:60rpx;background-color: #F26600;color: white;text-align: center;line-height: 60rpx;position: relative;z-index: 1003;margin-left:10rpx;margin-top:10rpx;font-size: 28rpx;}
+
 .list_com{height: 550rpx;border: 1rpx solid #CCCCCC; border-radius: 30rpx;margin-top: 10rpx;margin-left:1%;width: 48%;}
-.list_img{width: 96%;margin-left: 2%;margin-top: 10rpx;height: 350rpx;}
+.list_img{width: 96%;margin-left: 2%;margin-top: 10rpx;height: 350rpx;margin-top:-60rpx;}
 .time{width: 95%;margin-left: 2.5%;background-color: #F26600;color: white;font-size: 28rpx;height: 40rpx;line-height: 40rpx;}
 .list_name{width: 95%;margin-left: 2.5%;font-size: 30rpx;line-height: 50rpx;color:#333333;height:50rpx;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 .list_name_price{text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width:60%;}
@@ -29,5 +36,7 @@
 .com_img{border-top-left-radius: 10rpx;border-top-right-radius: 10rpx;}
 
 /* 搜索 */
-.search{width: 94%;margin-left: 3%;height: 80rpx;margin-top: 20rpx;border: 1rpx solid #CFCFCF;border-radius: 10rpx;}
+.search{width: 94%;margin-left: 3%;height: 80rpx;margin-top: 20rpx;border: 1rpx solid #f26600;border-radius: 10rpx;}
 .search_input{width: 83%;padding-left: 3%;height: 80rpx;font-size: 28rpx;}
+
+

@@ -1,13 +1,16 @@
 <!--pages/comdity_detail/comdity_detail.wxml-->
 <import src="../../wxParse/wxParse.wxml"/> 
 <!--轮播  -->
+<scroll-view scroll-y style='height:1100rpx;'>
 <view  class='page' style='height:{{clientHeight}};overflow:{{overflow}};'>
 <view class='head'>
+<view class='syw' >{{list.tips}}</view>
      <swiper indicator-dots="true" autoplay="true" interval="3000" indicator-color='white' indicator-active-color='#FF7F01' duration="1000" class="swiper-item" circular="true">
           <block wx:for="{{list.original_img}}" wx:for-index="index">
             <view class='swip'>
               <swiper-item>
-                <image src="{{list.header_original_img}}{{item}}" class="slide-image" style='width:100%;height:100%' mode="aspectFill" />
+                <image src="{{list.header_original_img}}{{item}}" class="slide-image" style='width:100%;height:100%' mode="aspectFit" />
+                <!-- <image src="../../img/未标题-2.jpg" class="slide-image" style='width:100%;height:100%' mode="aspectFill" /> -->
               </swiper-item>
             </view>
           </block>
@@ -16,17 +19,21 @@
 
 <!-- 黄色部分 -->
 <view class='yellow_div'>
-  <view style='height:30rpx;width:100%'></view>
+  <view style='height:10rpx;width:100%'></view>
   <view class='div_tops flex'>
       <view class='top_right'>
-          <view class='money'>￥{{list.shop_price}}<text style='color:#333333;font-size:30rpx;text-decoration:line-through'>￥{{list.original_price}}</text></view>
-          <view class='fs'>已拼{{list.order_count}}份</view>
+          <view class='money'>团购价:<text style='font-size:30rpx;'>￥{{list.shop_price}}</text></view>
+          <view class='fs'>零售价:<text style='color:#333333;font-size:24rpx;text-decoration:line-through'>￥{{list.original_price}}</text></view>
       </view>
-      <view class='top_right'>
-          <view class='end'>{{list.cat_id==1?'距离拼团结束':'等待拼团开始'}}</view>
+      <view class='right_top'>
+          <view class='right_top_top'>已拼{{list.order_count}}份|余{{list.store_count}}份</view>
+          <view class='right_top_top' style='margin-top:10rpx;'>累积销售{{list.sell_count}}份</view>
+      </view>
+      <view class='top_right' style='width:30%;'>
+          <view class='end' >{{start==1?'距离拼团结束':'等待拼团开始'}}</view>
           <view class='fs flex' style='margin-top:10rpx;'>
-              <image src='../../img/nz.png' style='width:40rpx;margin-left:30rpx;margin-top:20rpx;' mode='widthFix'/>
-              <view class='time'>{{list.cat_id==1?countdown:'00:00:00'}}</view>
+              <!-- <image src='../../img/nz.png' style='width:40rpx;margin-left:30rpx;margin-top:20rpx;' mode='widthFix'/> -->
+              <view class='time'>{{start==1?countdown:'00:00:00'}}</view>
           </view>
       </view>
   </view>
@@ -39,9 +46,9 @@
           <view class='yellow_kuang_left'>
             <view class='text nowarp'>{{list.goods_remark}}</view>
             <view class='xx flex'>
-                <image src='../../img/ty-3-1 (1).png' style='width:35rpx;margin-top:10rpx;' mode='widthFix'/>
+                <image src='{{url}}/public/images/yes_1.png' style='width:35rpx;margin-top:10rpx;' mode='widthFix'/>
                 <view class='wz'>团员自提</view>
-                <image src='../../img/ty-3-1 (1).png' style='width:35rpx;margin-top:10rpx;margin-left:30rpx;' mode='widthFix'/>
+                <image src='{{url}}/public/images/yes_1.png' style='width:35rpx;margin-top:10rpx;margin-left:30rpx;' mode='widthFix'/>
                 <view class='wz'>结团后次日达</view>
             </view>
           </view>
@@ -63,7 +70,7 @@
   </view>
 <view class='gg flex' bindtap='ggtc'>
     <view class='gg_name'>规格</view>
-    <view class='gg_detail'>{{item}}</view>
+    <view class='gg_detail'>{{list.spec.length==0?"暂无规格":list.spec.unit[0].item}}</view>
     <image src='../../img/dbx-1-kb.png' style='width:20rpx;margin-left:10rpx;margin-top:20rpx;' mode='widthFix'/>
 </view>
 <view class='gg flex'  bindtap='ggtc'>
@@ -80,7 +87,7 @@
       <view class='top_name'>参团人员</view>
   </view>
   <view class='heads flex'>
-      <view class='headimg' wx:for='{{list.group_head_img}}' >
+      <view class='headimg' wx:for='{{li}}' >
         <image src='{{item}}' mode='widthFix' style='width:100%' class='img'/>
       </view>
    
@@ -93,7 +100,7 @@
 
 <!-- 收货地址 -->
 <view style='margin-top:20rpx;background-color:#EFEFF4;width:100%;height:20rpx;'></view>
-<view class='div' bindtap='map'>
+<view class='div' bindtap='map' data-lon='{{list.take_address.longitude}}' data-lat='{{list.take_address.latitude}}'>
   <view class='div_top flex'>
       <view class='top_icon'></view>
       <view class='top_name'>收货地址</view>
@@ -129,24 +136,28 @@
 <view style='height:100rpx;'></view>
 
 </view>
+</scroll-view>
 
 <view class='bottom flex'>
     <view class='bottom_com flex'>
         <view class='com_list' bindtap='index'>
             <!-- <view class='imgs'> -->
-              <image src='../../img/tc-1 (1).png' style='width:50rpx; height:50rpx;' />
+              <image src='../../img/home.png' style='width:50rpx; height:50rpx;' />
             <!-- </view>   -->
             <view class='com_list_text' >主页</view>
         </view>
         <view class='com_list' bindtap='card'>
             <!-- <view class='imgs'> -->
-              <image src='../../img/tc-1 (4).png' style='width:50rpx; height:50rpx;' />
+              <view class='number_' wx:if='{{list.cart_count!=0}}'>{{list.cart_count}}</view>
+              <image src='../../img/cart.png' style='width:50rpx; height:50rpx;' />
             <!-- </view>   -->
             <view class='com_list_text'>购物车</view>
         </view>
     </view>
-    <view class='bottom_com' style='color:#3E3C34;background-color:#F9D63E'  bindtap='ggtcs' id='{{list.cat_id}}'>加入购物车</view>
-    <view class='bottom_com' style='color:#FEF7F3;background-color:#F26600'  bindtap='ggtcs' id='{{list.cat_id}}'>直接购买</view>
+
+
+    <view class='bottom_com' style='{{start!=1||list.store_count<=0||countdown=="00:00:00"?"background-color:#EFEFF4;color:#999":"color:#3E3C34;background-color:#F9D63E"}}'  bindtap='ggtcs' id='{{start}}'>加入购物车</view>
+    <view class='bottom_com' style='{{start!=1||list.store_count<=0||countdown=="00:00:00"?"background-color:#EFEFF4;color:#999":"color:#FEF7F3;background-color:#F26600"}}'  bindtap='ggtcs' id='{{start}}'>直接购买</view>
 </view>
 
 
@@ -160,12 +171,12 @@
               <image src='{{list.goods_img}}' style='width:100%;height:100%' mode='aspectFill'/>
             </view>
             <view class='ggtc_right'>
-                <view class='ggtc_money'>￥<text style='font-size:36rpx;font-weight: bold'>{{list.shop_price}}</text></view>
-                <view class='ggtc_sec'>选择规格</view>
+                <view class='ggtc_money'>￥<text style='font-size:36rpx;font-weight: bold'>{{num>1?price:list.shop_price}}</text></view>
+                <view class='ggtc_sec'>选择数量</view>
             </view>
             <image src='../../img/F2800566771AEC4656EB80D83BD0ACBC_05.png' style='width:50rpx;' mode='widthFix' bindtap='bindSorttap'/>
         </view>
-        <view class='ggtc_seclect'>
+        <!-- <view class='ggtc_seclect'>
             <view class='ggtc_seclect_title'>规格</view>
             <view class='ggtc_seclect_list flex'>
               <scroll-view scroll-x style=" white-space: nowrap; display: flex">
@@ -174,19 +185,21 @@
                 </block>
               </scroll-view>
             </view>
-        </view>
+        </view> -->
         <view class='ggtc_number flex'>
             <view class='text_number'>数量选择</view>
             <view class='number flex'>
-                <view class='j' bindtap='jian'>-</view>
+                <view class='j' bindtap='jian' id='{{list.shop_price}}'>-</view>
                 <view class='j' style='color:#707070'>{{num}}</view>
-                <view class='j' bindtap='jia'>+</view>
+                <view class='j' bindtap='jia' id='{{list.shop_price}}'>+</view>
             </view>
         </view>
         <view class='buttom flex'>
-            <view class='buttom_lis' style='background-color: #FE9E00' bindtap='add'>加入购物车</view>
-            <view class='buttom_lis' style='background-color: #FD5800' bindtap='pay'>立即购买</view>
+            <view class='buttom_lis' style='background-color: #FE9E00' bindtap='add'  data-id='{{start}}' id='{{list.spec.unit[0].item_id}}'>加入购物车</view>
+            <view class='buttom_lis' style='background-color: #FD5800' bindtap='pay'  data-id='{{start}}' id='{{list.spec.unit[0].item_id}}'>立即购买</view>
         </view>
    </view>
 </view>
 </block>
+
+

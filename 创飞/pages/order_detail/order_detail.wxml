@@ -53,5 +53,5 @@
 
 <view style='height:100rpx;'></view>
 <view class='fk_button' wx:if='{{lists.order_status=="待付款"}}' id='{{lists.order_id}}' bindtap='sub'>付款</view>
-<view class='fk_button' wx:if='{{lists.order_status=="已发货"}}' id='{{lists.order_id}}' bindtap='sub1'>确认到货</view>
+<view class='fk_button' wx:if='{{lists.order_status=="已发货"&&type==1}}' id='{{lists.order_id}}' bindtap='sub1' >确认到货</view>
 <view class='fk_button' wx:if='{{lists.order_status=="待自提"}}' id='{{lists.order_id}}' bindtap='sub2'>确认收货</view>

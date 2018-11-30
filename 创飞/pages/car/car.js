@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    url: getApp().globalData.url,
     a1: true,
     a2: false,
   },

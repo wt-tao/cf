@@ -5,7 +5,7 @@
     </view>
     <view class='top_right'>
         <view class='nicheng'>{{user.user_name}}</view>
-        <view class='nicheng join'>欢迎你加入创飞</view>
+        <view class='nicheng join'>欢迎加入优+</view>
     </view>
 </view>
 
@@ -20,36 +20,36 @@
     <view class='order_list flex'>
         <view class='list' bindtap='see' id='0' data-title='待付款'>
             <view class='images'>
-                <image src='../../img/fk (1).png' style='width:70%;height:80%;margin-left:15%;'/>
-                <view class='number'>{{user.waitPay}}</view>
+                <image src='http://cf.wm50.mingtengnet.com/public/images/4.png' style='width:60%;height:80%;margin-left:20%;'/>
+                <view class='number' wx:if='{{user.waitPay!=0}}'>{{user.waitPay}}</view>
             </view>
             <view class='order_text'>待付款</view>
         </view>
         <view class='list' bindtap='see' id='1' data-title='待配送'>
             <view class='images'>
-                <image src='../../img/fk (3).png' style='width:70%;height:80%;margin-left:15%;'/>
-                <view class='number'>{{user.waitSend}}</view>
+                <image src='http://cf.wm50.mingtengnet.com/public/images/3.png' style='width:60%;height:80%;margin-left:20%;'/>
+                <view class='number' wx:if='{{user.waitSend!=0}}'>{{user.waitSend}}</view>
             </view>
             <view class='order_text'>待配送</view>
         </view>
         <view class='list' bindtap='see' id='2' data-title='已发货'>
             <view class='images'>
-                <image src='../../img/fk (4).png' style='width:80%;height:80%;margin-left:10%;'/>
-                <view class='number'>{{user.endSend}}</view>
+                <image src='http://cf.wm50.mingtengnet.com/public/images/5.png' style='width:70%;height:80%;margin-left:15%;'/>
+                <view class='number' wx:if='{{user.endSend!=0}}'>{{user.endSend}}</view>
             </view>
             <view class='order_text'>已发货</view>
         </view>
         <view class='list' bindtap='see' id='3' data-title='待自提'>
             <view class='images'>
-                <image src='../../img/fk (2).png' style='width:80%;height:80%;margin-left:10%;'/>
-                <view class='number'>{{user.waitGet}}</view> 
+                <image src='http://cf.wm50.mingtengnet.com/public/images/2.png' style='width:70%;height:80%;margin-left:15%;'/>
+                <view class='number' wx:if='{{user.waitGet!=0}}'>{{user.waitGet}}</view> 
             </view>
             <view class='order_text'>待自提</view>
         </view>
         <view class='list' bindtap='see' id='4' data-title='已完成'>
             <view class='images'>
-                <image src='../../img/fk (5).png' style='width:70%;height:80%;margin-left:15%;'/>
-                <view class='number'>{{user.endComplete}}</view>
+                <image src='http://cf.wm50.mingtengnet.com/public/images/1.png' style='width:60%;height:80%;margin-left:20%;'/>
+                <!-- <view class='number' wx:if='{{user.endComplete!=0}}'>{{user.endComplete}}</view> -->
             </view>
             <view class='order_text'>已完成</view>
         </view>
@@ -61,7 +61,7 @@
         <view class='ewm_title'>提货码</view>
         <view class='ewm_bz'>提货时，向团长出示二维码提货</view>
         <view class='ewm_img'>
-            <image src='{{ps_code}}' style='width:100%;' mode='widthFix'/>
+            <image src='{{user.qr_code}}' style='width:100%;' mode='widthFix'/>
         </view>
         <view class='ewm_bz' style='margin-top:20rpx;'>也可使用提货码</view>
         <view class='ewm_button' bindtap='obtain'>获取提货码</view>

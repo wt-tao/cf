@@ -6,8 +6,8 @@ page{background-color: #EFEFF4}
 .list{width: 100%;background-color: white;margin-top: 30rpx;}
 .list_div{width: 92%;margin-left: 4%;}
 .title{width: 100%;height:60rpx;line-height: 60rpx;font-size: 26rpx;color: #B3B3B3;border-bottom: 1rpx solid #F7F7F7}
-.name{width: 80%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
-.state{width: 20%;color: #F27109;text-align: right;}
+.name{width: 75%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.state{width: 15%;color: #F27109}
 .comdity{width: 100%;height:250rpx;border-bottom: 1rpx solid #F7F7F7}
 .comdity_img{width: 200rpx;height:200rpx;margin-top: 25rpx;}
 .comdity_center{width: 300rpx;height: 200rpx;margin-top: 25rpx;margin-left: 30rpx;}
@@ -15,5 +15,8 @@ page{background-color: #EFEFF4}
 .bz{font-size: 26rpx;color: #C3C3C3;margin-top: -30rpx;}
 .comdity_right{width: 180rpx;height: 200rpx;margin-top: 25rpx;text-align: right;}
 .bottom{width: 100%;line-height: 100rpx;font-size: 28rpx;color: #333333;border-bottom: 1rpx solid #F7F7F7}
-.number{width: 50%;}
-.numbers{text-align: right;width: 50%;}
+.number{width: 70%;}
+.numbers{text-align: right;width: 30%;}
+
+.search{width: 94%;margin-left: 3%;height: 80rpx;margin-top: 20rpx;border: 1rpx solid #f26600;border-radius: 10rpx;background-color: white}
+.search_input{width: 83%;padding-left: 3%;height: 80rpx;font-size: 28rpx;}

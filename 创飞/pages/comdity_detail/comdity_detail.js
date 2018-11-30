@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    url: getApp().globalData.url,
     sort: false,
     countdown: '', 
     endDate2: '',
@@ -31,7 +32,13 @@ Page({
           title: '暂未开团',
           content: '您选购的商品暂未开团，请等待开团后抢购',
         })
-    }else{
+    } else if (this.data.countdown =='00:00:00'){
+      wx.showModal({
+        title: '时间截止，无法购买',
+        content: '拼团时间已经截止，请等待下次开团时购买',
+      })
+    }
+    else{
       var height = wx.getSystemInfoSync().windowHeight
       console.log(height)
       this.setData({
@@ -48,12 +55,14 @@ Page({
       sort:false,
     })
   },
-  jia:function(){
+  jia:function(e){
     this.setData({
-      num: this.data.num+1
+      num: this.data.num+1,
+      price: ((this.data.num+1) * (e.currentTarget.id)).toFixed(2)
     })
+    // console.log(((this.data.num) * (e.currentTarget.id)).toFixed(2))
   },
-  jian: function () {
+  jian: function (e) {
     var num = this.data.num
     if(num==1){
       this.setData({
@@ -61,22 +70,24 @@ Page({
       })
     }else{
     this.setData({
-      num: this.data.num - 1
+      num: this.data.num - 1,
+      price: ((this.data.num -1) * (e.currentTarget.id)).toFixed(2)
     })
     }
   },
-  map:function(){
-    var list=this.data.list
+  map:function(e){
+    // var list=this.data.list
+    console.log(e)
     var that=this
-    wx.getLocation({
-      type: "gcj02",
-      success: function (res) {
+    // wx.getLocation({
+    //   type: "wgs84",
+    //   success: function (res) {
         wx.openLocation({
-          longitude: parseInt(list.take_address.longitude),
-          latitude: parseInt(list.take_address.latitude)
+          longitude: e.currentTarget.dataset.lon,
+          latitude: e.currentTarget.dataset.lat
         })
-      }
-    })
+    //   }
+    // })
   },
   index:function(){
     wx.reLaunch({
@@ -96,17 +107,23 @@ Page({
     })
   },
   // 加入购物车
-  add:function(){
+  add:function(e){
+    console.log(e)
     var that=this
     var goods_id = this.data.goods_id
     var goods_num = this.data.num
-    var goods_spec = this.data.ids
-    if (goods_spec==undefined){
-        wx.showToast({
-          title: '请选择规格',
-          icon:'loading',
-          duration:2000,
-        })
+    var goods_spec = e.currentTarget.id
+    if (e.currentTarget.dataset.id != 1) {
+      wx.showModal({
+        title: '暂未开团',
+        content: '您选购的商品暂未开团，请等待开团后抢购',
+      })
+    } 
+   else if(this.data.countdown == '00:00:00'){
+      wx.showModal({
+        title: '时间截止，无法购买',
+        content: '拼团时间已经截止，请等待下次开团时购买',
+      })
     }else{
       wx.request({
         url: getApp().globalData.url + '/home/cart/addCart',
@@ -133,6 +150,7 @@ Page({
                   overflow: 'auto',
                   sort: false,
                 })
+                that.onShow()
               }
             })
           }else{
@@ -147,18 +165,23 @@ Page({
       })
     }
   },
-  pay:function(){
+  pay:function(e){
     var that = this
     var goods_id = this.data.goods_id
     var goods_num = this.data.num
-    var goods_spec = this.data.ids
-    if (goods_spec == undefined) {
-      wx.showToast({
-        title: '请选择规格',
-        icon: 'loading',
-        duration: 2000,
+    var goods_spec = e.currentTarget.id
+    if (e.currentTarget.dataset.id != 1) {
+      wx.showModal({
+        title: '暂未开团',
+        content: '您选购的商品暂未开团，请等待开团后抢购',
       })
-    } else {
+    } 
+   else if(this.data.countdown == '00:00:00'){
+        wx.showModal({
+          title: '时间截止，无法购买',
+          content: '拼团时间已经截止，请等待下次开团时购买',
+        })
+      }else{
       wx.request({
         url: getApp().globalData.url + '/home/payment/immediately_pay',
         method: "POST",
@@ -229,41 +252,7 @@ Page({
       id:options.id
     })
     console.log(options)
-    wx.showLoading({
-      title: '加载中...',
-      duration: 2000
-    })
-    var that = this;
-    wx.request({
-      url: getApp().globalData.url + '/home/goods/detail',
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8', // 默认值
-        // 'content-type': 'application/json;charset=utf-8',
-      },
-      data: {
-        goods_id: options.id,
-        key: wx.getStorageSync('result'),
-      },
-      success: function (res) {
-        console.log('商品详情', res)
-        if (res.data.status==1){
-          var da = res.data.result.content
-          WxParse.wxParse('da', 'html', da, that, 5)
-
-          
-          that.setData({
-            goods_id: options.id,
-            list: res.data.result,
-            endDate2: res.data.result.end_time
-          })
-
-          wx.hideLoading()    
-          that.countTime()
-        }
-      
-      }
-    })
+   
   },
 
   countTime() {
@@ -279,6 +268,9 @@ Page({
     // console.log('leftTime', leftTime)                          
     var d, h, m, s, ms;
     if (leftTime >= 0) {
+      that.setData({
+        start: 1,
+      })
       d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
       h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
       m = Math.floor(leftTime / 1000 / 60 % 60);
@@ -289,7 +281,7 @@ Page({
       m = m < 10 ? "0" + m : m
       h = h < 10 ? "0" + h : h
       that.setData({
-        countdown: d + "天" + h + "：" + m + "：" + s,
+        countdown: d + "天" + h + ":" + m + ":" + s,
       })
       //递归每秒调用countTime方法，显示动态时间效果
       setTimeout(that.countTime, 100);
@@ -315,7 +307,51 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.showLoading({
+      title: '加载中...',
+      duration: 2000
+    })
+    var that = this;
+    wx.request({
+      url: getApp().globalData.url + '/home/goods/detail',
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8', // 默认值
+        // 'content-type': 'application/json;charset=utf-8',
+      },
+      data: {
+        goods_id: this.data.id,
+        key: wx.getStorageSync('result'),
+      },
+      success: function (res) {
+        console.log('商品详情', res)
+        if (res.data.status == 1) {
+          var da = res.data.result.content
+          WxParse.wxParse('da', 'html', da, that, 5)
+          var li = []
+          for (var i = 0; i < res.data.result.group_head_img.length; i++) {
+            if (i > 8) {
+              break;
+            } else {
+              li.push(res.data.result.group_head_img[i])
+            }
+          }
+          // console.log('li', li)
 
+
+          that.setData({
+            li: li,
+            goods_id: that.data.id,
+            list: res.data.result,
+            endDate2: res.data.result.end_time
+          })
+
+          wx.hideLoading()
+          that.countTime()
+        }
+
+      }
+    })
   },
 
   /**
@@ -354,7 +390,7 @@ Page({
     return {
       title: list.goods_name,
       // desc: that.data.common.introduction,
-      imageUrl: list.header_original_img+list.original_img[0],
+      // imageUrl: list.header_original_img+list.original_img[0],
       path: '/pages/comdity_detail/comdity_detail?id=' + this.data.id,
 
       success: function (res) {

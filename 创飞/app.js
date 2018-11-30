@@ -23,6 +23,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    url:'http://cf.wm50.mingtengnet.com'
+    url:'https://cf.wm50.mingtengnet.com'
   }
 })

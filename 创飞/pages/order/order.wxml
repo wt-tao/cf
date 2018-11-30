@@ -3,12 +3,20 @@
   <view class='title_list {{item.id==ids?"on":""}}' wx:for='{{list}}' bindtap='list' id='{{item.id}}'>{{item.title}}</view>
 </view>
 
+  <view class='search flex' hidden='{{ids!=3&&type==1}}'>
+            <input class='search_input' placeholder='请输入取货码搜索产品' placeholder-style='fong-size:28rpx;color:#A7A7A7' bindinput='searcg_input' value='{{keywords}}' type='number'/>
+            <image src='../../img/1_05.png' style='width:45rpx;margin-top:17rpx;margin-left:30rpx;' mode='widthFix' bindtap='search'/>
+        </view>
+
 <view class='list' bindtap='order_detail' data-order_id='{{item.order_id}}' wx:for='{{lists}}'>
     <view class='list_div'>
         <view class='title flex'>
-            <view class='name'>{{item.user_name}} | {{item.group_name}} | {{item.address}}</view>
-            <view class='state' >{{(item.order_status==0)?'待付款':(item.order_status==1)?'待配送':(item.order_status==2)?'已发货3':(item.order_status==3)?'待自提':(item.order_status==4)?'已完成':''}}</view>
+            <view class='name'> <text style='color:#F27109'>{{item.user_name}}</text> {{item.group_user_name}} | {{item.group_name}} </view>
+            <view class='state' >{{(item.order_status==0)?'待付款':(item.order_status==1)?'待配送':(item.order_status==2)?'已发货':(item.order_status==3)?'待自提':(item.order_status==4)?'已完成':''}}</view>
+            <image src='../../img/F2800566771AEC4656EB80D83BD0ACBC_05.png' style='width:30rpx;margin-top:20rpx;margin-left:50rpx;' mode='widthFix' catchtap='del' id='{{item.order_id}}'  hidden='{{ids!=0}}'/>
         </view>
+
+      
         <!-- 商品 -->
         <view class='comdity flex' wx:for='{{item.order_goods}}' wx:for-item='key'>
             <view class='comdity_img'>
@@ -26,7 +34,7 @@
   
         <!-- 价格 -->
         <view class='bottom flex'>
-            <view class='number'>共 {{item.order_goods.length}} 件商品</view>
+            <view class='number'>共 {{item.order_goods.length}} 件商品　    <text style='color:#999;font-size:24rpx;margin-left:50rpx;'>{{item.order_status==4?item.end_time:""}}</text>　</view>
             <view class='numbers'>合计：<text style='color:#ED0606;font-size:34rpx;'>￥{{item.goods_price}}</text></view>
         </view>
     </view>
